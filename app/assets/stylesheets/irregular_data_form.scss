@@ -1,0 +1,40 @@
+
+.text-conversion{
+  width: 88%;
+  margin: 0 auto;
+  .head-line{
+    margin: 10px;
+  }
+
+  .body{
+    position: relative;
+    margin: 20px;
+    .part-left{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    .part-right{
+      position:absolute;
+      top: 0px;
+      right: 0px;
+    }
+    .part-center{
+      hr{
+        margin-top: 0px;
+      }
+    }
+  }
+
+  .middle-line{
+    margin-top: 100px;
+  }
+
+  .footer-button{
+    margin-top: 10px;
+  }
+
+  .footer-line{
+    margin-top: 150px;
+  }
+}
