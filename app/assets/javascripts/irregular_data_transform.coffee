@@ -2,8 +2,18 @@ class Conversion
   constructor: (@$eml) ->
     @bind_event()
 
+  replace_special_char: (text, char, safe)->
+    patternInRegexp = new RegExp(char, 'g');
+    return text.replace(patternInRegexp, safe)
+
   replace_chars: (text)->
-    console.log text
+    text1 = @replace_special_char(text, '\\\\(?!n)(?!t)', '\\/')
+    text2 = @replace_special_char(text1, '\t', '  ')
+    text3 = @replace_special_char(text2, '\n', '\\n')
+    text4 = @replace_special_char(text3, '"', '\\"')
+    text5 = @replace_special_char(text4, '\'', '\\"')
+    text6 = @replace_special_char(text5, ':', '：')
+    return text6
 
   bind_event: ->
     @$eml.on "click", ".footer-button .chinese-sequence-paren",=>
