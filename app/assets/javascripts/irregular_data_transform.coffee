@@ -68,6 +68,7 @@ class Conversion
         str_array.push('\n{\n'+'"说明文字的类别":"'+result[1]+'",\n'+'"说明文字":"\\n '+@replace_chars(result[2])+'\\n\\n"\n'+'}\n')
       jQuery(".body .part-right textarea").val("["+str_array+"]")
 
+
     # 纯中文标题
     @$eml.on "click", ".footer-button .chinese-sequence",=>
       text_value = jQuery(".body .part-left textarea").val()
@@ -77,7 +78,18 @@ class Conversion
       jQuery(".body .part-right textarea").val(@strArrayToJsonStr(processedStrArray))
     # 
 
-
+    @$eml.on "click",".footer-button .figure-sequence",=>
+      text_value = jQuery(".body .part-left textarea").val()
+      text_value
+      str_array = []
+      regexp = new RegExp('^([ \\t]*[0-9]+、[^：]+)：([^]+?(?=[0-9]+、)|[^]+(?!1、)(?!2、)(?!3、)(?!4、)(?!5、)(?!6、)(?!7、)(?!8、)(?!9、)(?!10、))','gm')
+      while(result = regexp.exec(text_value))
+        str_array.push(
+          '\n{\n' +
+          ' "说明文字的类别" : " ' + result[1] + ' "  ,\n' + 
+          ' "说明文字" : " \\n ' + @replace_chars(result[2]) + ' \\n\\n" \n' +
+          '}\n')
+       jQuery(".body .part-right textarea").val("["+str_array+"]")
 
 
 jQuery(document).on "ready page:load", ->
