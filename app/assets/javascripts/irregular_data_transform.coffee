@@ -11,20 +11,6 @@ class Conversion
     text6 = @replaceSpecialChar(text5, ':', '：')
     return text6
 
-  textToStrArray: (text)->
-    strArray = text.split('\n')
-    map(strArray)
-    return strArray
-
-  strArrayIterator: (strArray, procFunc)->
-    processedStrArray = [];
-    idx for idx in [0..strArray.length-1](var idx = 0; idx < strArray.length; idx++) 
-      trimmedStr = strArray[idx].trim()
-      if (trimmedStr != "")
-        processedStrArray.push(procFunc(trimmedStr))
-      else 
-    return processedStrArray;
-
 
   replaceSpecialChar: (text, specialChar, safeChar)->
     patternInRegexp = new RegExp(specialChar, 'g')
@@ -41,7 +27,6 @@ class Conversion
 
     @$eml.on "click",".footer-button .figure-sequence",=>
       text_value = jQuery(".body .part-left textarea").val()
-      text_value
       str_array = []
       regexp = new RegExp('^([ \\t]*[0-9]+、[^：]+)：([^]+?(?=[0-9]+、)|[^]+(?!1、)(?!2、)(?!3、)(?!4、)(?!5、)(?!6、)(?!7、)(?!8、)(?!9、)(?!10、))','gm')
       while(result = regexp.exec(text_value))

@@ -3,4 +3,8 @@ class IrregularDataTransformsController < ApplicationController
     
   end
 
+  def graphviz 
+    
+  end
+
 end
