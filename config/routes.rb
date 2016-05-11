@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'transfer'=>'irregular_data_transforms#transfer_page'
+  post 'transfer_action'=>'irregular_data_transforms#transfer_action'
+  get 'lists'=>'irregular_data_transforms#transform_lists'
 
-  resources :irregular_data_transforms
+  resources :irregular_data_transforms 
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
