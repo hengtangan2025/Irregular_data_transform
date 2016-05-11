@@ -3,7 +3,7 @@ class Conversion
     @bind_event()
 
   replace_special_char: (text, char, safe)->
-    patternInRegexp = new RegExp(char, 'g');
+    patternInRegexp = new RegExp(char, 'g')
     return text.replace(patternInRegexp, safe)
 
   replace_chars: (text)->
