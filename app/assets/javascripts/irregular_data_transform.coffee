@@ -15,6 +15,7 @@ class Conversion
     text6 = @replace_special_char(text5, ':', '：')
     return text6
 
+
   # 纯中文标题
   convertToUnixNewline: (text)->
     patternInRegexp = new RegExp('\r\n', 'g');
@@ -23,6 +24,7 @@ class Conversion
   appendNewlineTocolon: (text)->
     patternInRegexp = new RegExp('：', 'g');
     return text.replace(patternInRegexp, '：\n');
+
 
   replaceSpecialChar: (text, specialChar, safeChar)->
     patternInRegexp = new RegExp(specialChar, 'g');
@@ -58,7 +60,6 @@ class Conversion
     return '[\n' + generatedJsonStr + '\n]';
   # 
 
-
   bind_event: ->
     @$eml.on "click", ".footer-button .chinese-sequence-paren",=>
       text_value = jQuery(".body .part-left textarea").val()
@@ -80,7 +81,6 @@ class Conversion
 
     @$eml.on "click",".footer-button .figure-sequence",=>
       text_value = jQuery(".body .part-left textarea").val()
-      text_value
       str_array = []
       regexp = new RegExp('^([ \\t]*[0-9]+、[^：]+)：([^]+?(?=[0-9]+、)|[^]+(?!1、)(?!2、)(?!3、)(?!4、)(?!5、)(?!6、)(?!7、)(?!8、)(?!9、)(?!10、))','gm')
       while(result = regexp.exec(text_value))
