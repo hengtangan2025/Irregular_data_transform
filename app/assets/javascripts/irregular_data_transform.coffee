@@ -11,12 +11,24 @@ class Conversion
     text6 = @replaceSpecialChar(text5, ':', '：')
     return text6
 
- 
+  textToStrArray: (text)->
+    strArray = text.split('\n')
+    map(strArray)
+    return strArray
+
+  strArrayIterator: (strArray, procFunc)->
+    processedStrArray = [];
+    idx for idx in [0..strArray.length-1](var idx = 0; idx < strArray.length; idx++) 
+      trimmedStr = strArray[idx].trim()
+      if (trimmedStr != "")
+        processedStrArray.push(procFunc(trimmedStr))
+      else 
+    return processedStrArray;
+
 
   replaceSpecialChar: (text, specialChar, safeChar)->
     patternInRegexp = new RegExp(specialChar, 'g')
     return text.replace(patternInRegexp, safeChar)
-
 
   bind_event: ->
     @$eml.on "click", ".footer-button .chinese-sequence-paren",=>
