@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   post 'transfer_action'=>'irregular_data_transforms#transfer_action'
   get 'lists'=>'irregular_data_transforms#transform_lists'
 
-  resources :irregular_data_transforms 
+
+
+  resources :irregular_data_transforms do
+    collection do
+      get 'graphviz'
+      get 'graphviz_to_gml'
+      post 'graphviz_to_gml_progarm'
+      post 'convert'
+    end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

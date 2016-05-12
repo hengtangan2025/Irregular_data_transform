@@ -15,10 +15,27 @@ class IrregularDataTransformsController < ApplicationController
     redirect_to :action => "transfer_page", :shell_command => "./public/graphml2hintpipe.pl ./public/#{will_transfer_file.original_filename}"
   end
 
+  def graphviz 
+  end
+
+  def graphviz_to_gml
+  end
+
+  def graphviz_to_gml_progarm
+    dot_file = File.new(File.join("./public","graphviz.dot"), "w+")
+    dot_file.puts(params[:graphviz])
+    dot_file.close
+    `./public/dot2graphml_gml.sh ./public/graphviz.dot ./public/graphviz.gml`
+    file = File.read("./public/graphviz.gml")
+    render :text => file.encode("UTF-8","gbk")
+  end
+
   # 对话泡泡
   def convert
     pre_path = Rails.root.to_s + "/public/pre.yml"
-    
+    chat_text = params[:chat_text].strip
+    @data = conver_qq(chat_text, pre_path)
+    render :json => { :convert_yml => @data }
   end
 
   private
