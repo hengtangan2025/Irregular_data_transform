@@ -35,7 +35,7 @@ class IrregularDataTransformsController < ApplicationController
     pre_path = Rails.root.to_s + "/public/pre.yml"
     chat_text = params[:chat_text].strip
     @data = conver_qq(chat_text, pre_path)
-    render :json => { :convert_yml => @data }
+    render :text => @data.to_yaml
   end
 
   private

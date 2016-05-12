@@ -45,13 +45,6 @@ class Conversion
         generatedJsonStr += ",\n";
     return '[\n' + generatedJsonStr + '\n]';
 
-  # 将JSON转换成YAML
-  json_convert_to_yaml: (json)->
-    prettyJSONString = json.toString(4)
-    Map<String, Object> map = (Map<String, Object>)yaml.load(prettyJSONString)
-    output = yaml.dump(map2)
-
-
   bind_event: ->
     # 带括号的中文标题
     @$eml.on "click", ".footer-button .chinese-sequence-paren",=>
@@ -86,19 +79,19 @@ class Conversion
 
     # 对话泡泡
     @$eml.on "click", ".footer-button .chatflow-qq", =>
-      # question_id = jQuery(this).closest(".insert-flaw").attr("data-question-id")
       text_value = jQuery(".body .part-left textarea").val()
       jQuery.ajax
         url: "/irregular_data_transforms/convert",
         method: "post",
         data: {chat_text: text_value }
       .success (msg) ->
-        # console.log msg.convert_yml
-        @json_convert_to_yaml(msg.convert_yml)
-        jQuery(".body .part-right textarea").val(msg.convert_yml)
+        jQuery(".body .part-right textarea").val(msg)
       .error (msg) ->
         console.log(msg)
 
+    #保存yaml文件
+    @$eml.on "click", ".body .save-script button", =>
+      console.log "hello"
       
       
 
