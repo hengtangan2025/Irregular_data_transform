@@ -2,18 +2,14 @@ class Conversion
   constructor: (@$eml) ->
     @bind_event()
 
-  replace_special_char: (text, char, safe)->
-    patternInRegexp = new RegExp(char, 'g')
-    return text.replace(patternInRegexp, safe)
+  # 匹配qq对话信息
+  match_qq_conversation_text: (conversation_text)->
+    pre_path = '/public/pre.yml'
+    console.log "pre_path==="+pre_path
+    patternInRegexp = new RegExp('^[\u4E00-\u9FA5\w]+[\s][\d{4}\/\d{1,2}\/\d{1,2} \d{2}:\d{2}:\d{2}]{18,}\s+','gm')
+    while (result = patternInRegexp.exec(conversation_text))
+      console.log result
 
-  replace_chars: (text)->
-    text1 = @replace_special_char(text, '\\\\(?!n)(?!t)', '\\/')
-    text2 = @replace_special_char(text1, '\t', '  ')
-    text3 = @replace_special_char(text2, '\n', '\\n')
-    text4 = @replace_special_char(text3, '"', '\\"')
-    text5 = @replace_special_char(text4, '\'', '\\"')
-    text6 = @replace_special_char(text5, ':', '：')
-    return text6
 
   # 纯中文标题
   convertToUnixNewline: (text)->
@@ -60,12 +56,13 @@ class Conversion
 
 
   bind_event: ->
+    # 带括号的中文标题
     @$eml.on "click", ".footer-button .chinese-sequence-paren",=>
       text_value = jQuery(".body .part-left textarea").val()
       str_array = []
       regexp = new RegExp('^([ \\t]*（[一二三四五六七八九]）[^：\\r\\n]+)[：\\r\\n]+((?![^（）]*\\(\\))[^（）]*)', 'gm')
       while(result = regexp.exec(text_value))
-        str_array.push('\n{\n'+'"说明文字的类别":"'+result[1]+'",\n'+'"说明文字":"\\n '+@replace_chars(result[2])+'\\n\\n"\n'+'}\n')
+        str_array.push('\n{\n'+'"说明文字的类别":"'+@replaceAllSpecialChars(result[1])+'",\n'+'"说明文字":"\\n '+@replaceAllSpecialChars(result[2])+'\\n\\n"\n'+'}\n')
       jQuery(".body .part-right textarea").val("["+str_array+"]")
 
 
@@ -90,6 +87,23 @@ class Conversion
           ' "说明文字" : " \\n ' + @replace_chars(result[2]) + ' \\n\\n" \n' +
           '}\n')
        jQuery(".body .part-right textarea").val("["+str_array+"]")
+
+    # 对话泡泡
+    @$eml.on "click", ".footer-button .chatflow-qq", =>
+      # question_id = jQuery(this).closest(".insert-flaw").attr("data-question-id")
+      # jQuery.ajax
+      #   url: "/question_flaws",
+      #   method: "post",
+      #   data: {question_id: question_id }
+      # .success (msg) ->
+      #   window.location.reload()
+      # .error (msg) ->
+      #   console.log(msg)
+      
+      # @match_qq_conversation_text(text_value)
+      text_value = jQuery(".body .part-left textarea").val()
+      
+      
 
 
 jQuery(document).on "ready page:load", ->

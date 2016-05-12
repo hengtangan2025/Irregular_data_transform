@@ -1,0 +1,10 @@
+---
+scripts:
+- npc: "谢行知"
+  sentences:
+  - text: "test example"
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
