@@ -19,4 +19,16 @@ class IrregularDataTransformsController < ApplicationController
   def graphviz 
   end
 
+  def graphviz_to_gml
+  end
+
+  def graphviz_to_gml_progarm
+    dot_file = File.new(File.join("./public","graphviz.dot"), "w+")
+    dot_file.puts(params[:graphviz])
+    dot_file.close
+    `./public/dot2graphml_gml.sh ./public/graphviz.dot ./public/graphviz.gml`
+    file = File.read("./public/graphviz.gml")
+    render :text => file.encode("UTF-8","gbk")
+  end
+
 end
