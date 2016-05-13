@@ -27,21 +27,74 @@ class Graphviz
     regExpMatchResult = regExpForhintPipe.exec(hintPipeStr)
     
     checkColorValueResult = @checkColorValue(regExpMatchResult[0])
-    
+  
     if regExpMatchResult != null
       if checkColorValueResult == null
         hintPipeObj = {
           "inPort": regExpMatchResult[1],
-          "outPort": regExpMatchResult[3]
+          "outPort": regExpMatchResult[3],
+          "completeString" : regExpMatchResult[0]
         }
       else
         hintPipeObj = {
           "inPort": regExpMatchResult[1],
-          "outPort": regExpMatchResult[3]
-          "color": checkColorValueResult[0]
+          "outPort": regExpMatchResult[3],
+          "color": checkColorValueResult[0],
+          "completeString" : regExpMatchResult[0]
         }
 
     return hintPipeObj
+
+  #添加颜色值,后续节点越多颜色越深
+  hintPipeAddColor: (hintPipeObjWithNumber)->
+    switch hintPipeObjWithNumber["number"]
+      when 10 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#030387" + '\n'
+      when 9 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#181891" + '\n'
+      when 8 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#2D2D9B" + '\n'
+      when 7 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#4242A5" + '\n'
+      when 6 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#5757AF" + '\n'
+      when 5 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#6C6CB9" + '\n'
+      when 4 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#8181C3" + '\n'
+      when 3 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#9696CD" + '\n'
+      when 2 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#ABABD7" + '\n'
+      when 1 then TextWithColor = '' +  hintPipeObjWithNumber["completeString"]  + ' ' + "#C0C0E1" + '\n'
+    
+    return TextWithColor
+    
+  # 为每条文本添加颜色值
+  TextWithColors: (hintPipeObjWithNumberArray)->
+    TextWithColors = ""
+    for hintPipeObjWithNumber in hintPipeObjWithNumberArray
+      TextWithColors += @hintPipeAddColor(hintPipeObjWithNumber)
+    
+    console.log(TextWithColors)
+    return TextWithColors
+
+  # 计算每个节点后续节点的数量,并将数量添加到json对象中
+  hintPipeAddNumber: (hintPipeObjArray)->
+    hintPipeObjWithNumberArray = []
+    listMap = { }
+    for hintPipeObj in hintPipeObjArray
+      key = hintPipeObj["inPort"]
+
+      if !!listMap[key]
+        listMap[key]++
+      else
+        listMap[key] = 1
+
+    for hintPipeObj in hintPipeObjArray
+      key = hintPipeObj["inPort"]
+      
+      hintPipeObjWithNumber = {
+        "inPort": hintPipeObj["inPort"]
+        "outPort": hintPipeObj["outPort"]
+        "completeString" : hintPipeObj["completeString"]
+        "number": listMap[key]
+      }
+
+      hintPipeObjWithNumberArray.push(hintPipeObjWithNumber)
+
+    return hintPipeObjWithNumberArray
 
   # 把引思管道大段文本的每个元素都从字符串描述转换为 JS 对象
   hintPipeText2ObjArray: (hintPipeText)->
@@ -51,7 +104,6 @@ class Graphviz
     for hintPipeStr in hintPipeStrArray
       if hintPipeStr.trim() != " "
         hintPipeObjArray.push(@hintPipeStr2Obj(hintPipeStr.trim()))  
-    
     return hintPipeObjArray
   
   # 把引思管道序列的每个元素都从 JS 对象转换为 Dot 语法描述字符串
@@ -105,6 +157,13 @@ class Graphviz
       text_value = jQuery(".body .part-left textarea").val()
       final_dotEdges = @hintPipes2DigraphLR(text_value)
       jQuery(".body .part-right textarea").val(final_dotEdges)
+
+    @$eml.on "click", ".footer-button .hintpipe-add-color",=>
+      text_value = jQuery(".body .part-left textarea").val()
+      hintPipeObjArray = @hintPipeText2ObjArray(text_value)
+      hintPipeObjWithNumberArray = @hintPipeAddNumber(hintPipeObjArray)
+      TextWithColors = @TextWithColors(hintPipeObjWithNumberArray)
+      jQuery(".body .part-right textarea").val(TextWithColors)
 
 
 jQuery(document).on "ready page:load", ->
