@@ -63,9 +63,8 @@ class Graphviz
         DotEdge = '  "' + hintPipeObj["inPort"] + '" -> "' + hintPipeObj["outPort"] + '"\n'
       else
         DotEdge = '  "' + hintPipeObj["inPort"] + '"[color="' + hintPipeObj["color"] + '" fillcolor="' + hintPipeObj["color"] + '"]' + '\n' +
-        '  "' + hintPipeObj["outPort"] + '"[color="' + hintPipeObj["color"] + '" fillcolor="' + hintPipeObj["color"] + '"]' + '\n' +
         '  "' + hintPipeObj["inPort"] + '" -> "' + hintPipeObj["outPort"] + '" ' + '[color="' + hintPipeObj["color"] + '"]' + '\n'
-        
+
     return DotEdge;
 
   # 把引思管道序列的每个元素都从 JS 对象转换为 Dot 语法描述字符串
