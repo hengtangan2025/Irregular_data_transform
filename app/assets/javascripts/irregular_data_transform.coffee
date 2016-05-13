@@ -90,7 +90,7 @@ class Conversion
         console.log(msg)
 
     #保存yaml文件
-    @$eml.on "click", ".body .save-script button", =>
+    @$eml.on "click", ".body .save-script .save-file", =>
       fetch_text = jQuery(".body .part-right textarea").val()
       jQuery.ajax
         url: "/irregular_data_transforms/save_file_to_local",
@@ -99,7 +99,11 @@ class Conversion
       .success (msg) ->
         console.log msg
       .error (msg) ->
-        console.log(msg)    
+        console.log(msg)
+
+    #下载保存文件
+    @$eml.on "click", ".body .save-script .download-file", =>  
+      location.href = "/irregular_data_transforms/down_load"
 
 
 jQuery(document).on "ready page:load", ->

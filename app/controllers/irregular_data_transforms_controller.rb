@@ -1,3 +1,6 @@
+require 'tempfile'
+require 'open-uri'
+require 'net/http'
 class IrregularDataTransformsController < ApplicationController
   def index
     
@@ -41,10 +44,14 @@ class IrregularDataTransformsController < ApplicationController
   # 将文件保存到本地
   def save_file_to_local
     fetch_text = params[:save_text]
-    file_path = "public/convert.yml"
+    file_path = "public/convert_file/convert.yml"
     text_convert = File.new(file_path, 'wb+')
     text_convert.write(fetch_text)
     text_convert.close
+  end
+
+  def down_load
+    send_file("./public/convert_file/convert.yml",disposition: "attachment", :filename => "convert.yml", type: "application/yml")
   end
 
   private

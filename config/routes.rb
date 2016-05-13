@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post 'graphviz_to_gml_progarm'
       post 'convert'
       post 'save_file_to_local'
+      get 'down_load'
     end
   end
 
