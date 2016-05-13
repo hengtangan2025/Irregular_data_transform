@@ -51,4 +51,4 @@ gem 'mongoid', '~> 4.0'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
-# gem "chatflow-tools", :path => "../chatflow-tools"
+gem 'thin'
