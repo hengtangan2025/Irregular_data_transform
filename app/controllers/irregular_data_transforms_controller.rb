@@ -38,6 +38,15 @@ class IrregularDataTransformsController < ApplicationController
     render :text => @data.to_yaml
   end
 
+  # 将文件保存到本地
+  def save_file_to_local
+    fetch_text = params[:save_text]
+    file_path = "public/convert.yml"
+    text_convert = File.new(file_path, 'wb+')
+    text_convert.write(fetch_text)
+    text_convert.close
+  end
+
   private
     def conver_qq(str, pre_path)
       date1 = /^[\d{2}:\d{2}:\d{2}]{8,}/

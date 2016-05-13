@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'graphviz_to_gml'
       post 'graphviz_to_gml_progarm'
       post 'convert'
+      post 'save_file_to_local'
     end
   end
 

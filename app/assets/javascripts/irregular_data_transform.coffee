@@ -91,9 +91,15 @@ class Conversion
 
     #保存yaml文件
     @$eml.on "click", ".body .save-script button", =>
-      console.log "hello"
-      
-      
+      fetch_text = jQuery(".body .part-right textarea").val()
+      jQuery.ajax
+        url: "/irregular_data_transforms/save_file_to_local",
+        method: "post",
+        data: {save_text: fetch_text }
+      .success (msg) ->
+        console.log msg
+      .error (msg) ->
+        console.log(msg)    
 
 
 jQuery(document).on "ready page:load", ->
