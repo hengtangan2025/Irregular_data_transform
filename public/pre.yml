@@ -1,4 +1,12 @@
----
+npcs:
+  - id: "李博超"
+    name: 李博超
+    avatar: http://i.teamkn.com/i/IyuvIgoJ.png?imageMogr2/thumbnail/100x
+  - id: "吴笛"
+    name: 吴笛
+    avatar: http://img.teamkn.com/i/B5VSfH2U.png@100w_100h_1e_1c.png
+    direction: right
+    
 scripts:
 - npc: "谢行知"
   sentences:

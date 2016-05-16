@@ -48,6 +48,7 @@ class IrregularDataTransformsController < ApplicationController
     text_convert = File.new(file_path, 'wb+')
     text_convert.write(fetch_text)
     text_convert.close
+    render :text_convert => text_convert
   end
 
   def down_load

@@ -45,6 +45,20 @@ class Conversion
         generatedJsonStr += ",\n";
     return '[\n' + generatedJsonStr + '\n]';
 
+  # 保存转换后的文件
+  convert_sent_post: (fetch_text)->
+    jQuery.ajax
+      url: "/irregular_data_transforms/save_file_to_local",
+      method: "post",
+      data: {save_text: fetch_text }
+    .success (msg) ->
+      console.log "success"
+    .error (msg) ->
+      console.log "failure"
+  #下载转换后的文件
+  convert_sent_get: ()->
+    location.href = "/irregular_data_transforms/down_load"
+
   bind_event: ->
     # 带括号的中文标题
     @$eml.on "click", ".footer-button .chinese-sequence-paren",=>
@@ -63,7 +77,6 @@ class Conversion
       colonWithNewlineText = @appendNewlineTocolon(unixText);
       processedStrArray = @matchType03SubSections(colonWithNewlineText);
       jQuery(".body .part-right textarea").val(@strArrayToJsonStr(processedStrArray))
-    # 
 
     @$eml.on "click",".footer-button .figure-sequence",=>
       text_value = jQuery(".body .part-left textarea").val()
@@ -89,22 +102,11 @@ class Conversion
       .error (msg) ->
         console.log(msg)
 
-    #保存yaml文件
+    #保存yaml文件并下载
     @$eml.on "click", ".body .save-script .save-file", =>
       fetch_text = jQuery(".body .part-right textarea").val()
-      jQuery.ajax
-        url: "/irregular_data_transforms/save_file_to_local",
-        method: "post",
-        data: {save_text: fetch_text }
-      .success (msg) ->
-        console.log msg
-      .error (msg) ->
-        console.log(msg)
-
-    #下载保存文件
-    @$eml.on "click", ".body .save-script .download-file", =>  
-      location.href = "/irregular_data_transforms/down_load"
-
+      @convert_sent_post(fetch_text)
+      @convert_sent_get()
 
 jQuery(document).on "ready page:load", ->
   if jQuery(".text-conversion").length > 0
