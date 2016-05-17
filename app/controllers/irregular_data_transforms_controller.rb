@@ -56,4 +56,8 @@ class IrregularDataTransformsController < ApplicationController
     render :text => file.encode("UTF-8","gbk")
   end
 
+  def xml2json
+    
+  end
+
 end
