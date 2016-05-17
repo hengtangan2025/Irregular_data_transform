@@ -67,7 +67,6 @@ class Graphviz
     for hintPipeObjWithNumber in hintPipeObjWithNumberArray
       TextWithColors += @hintPipeAddColor(hintPipeObjWithNumber)
     
-    console.log(TextWithColors)
     return TextWithColors
 
   # 计算每个节点后续节点的数量,并将数量添加到json对象中
