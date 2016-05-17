@@ -7,4 +7,8 @@ class IrregularDataTransformsController < ApplicationController
     
   end
 
+  def xml2json
+    
+  end
+
 end

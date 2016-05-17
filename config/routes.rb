@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :irregular_data_transforms do
     collection do
       get 'graphviz'
+      get 'xml2json'
     end
   end
 
