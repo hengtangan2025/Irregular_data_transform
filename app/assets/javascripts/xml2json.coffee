@@ -8,28 +8,43 @@ class Xml2json
       xotree = new XML.ObjTree
       dumper = new JKL.Dumper()
       tree = xotree.parseXML(text_value)
-      text = tree["opml"]["body"]["outline"]["outline"]["-text"]
-      regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^\\n]+)"
-      regExpForhintPipe = new RegExp(regExp, "g")
-      regExpMatchResult = regExpForhintPipe.exec(text)
-      descObj = {
-        "title" : tree["opml"]["body"]["outline"]["outline"]["outline"][0]["-text"]
-        "content" : tree["opml"]["body"]["outline"]["outline"]["outline"][0]["-_note"]
-      }
-
-      infoUrlObj = {
-        "title" : tree["opml"]["body"]["outline"]["outline"]["outline"][1]["-text"]
-        "href" : tree["opml"]["body"]["outline"]["outline"]["outline"][1]["-_note"]
-      }
-    
-      jsonObj = {
-        "inPort" : regExpMatchResult[1]
-        "outPort" : regExpMatchResult[3]
-        "desc" : descObj
-        "infoUrl" : infoUrlObj
-      }
+      str_array = []
+      # jsonObjArray = []
+      jsonArray = tree["opml"]["body"]["outline"]["outline"]
       
-      jQuery(".body .part-right textarea").val(dumper.dump(jsonObj))
+      for json in jsonArray
+        text = json["-text"]
+        regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^\\n]+)"
+        regExpForhintPipe = new RegExp(regExp, "g")
+        regExpMatchResult = regExpForhintPipe.exec(text)
+
+        # descObj = {
+        #   "title" : json["outline"][0]["-text"]
+        #   "content" : json["outline"][0]["-_note"]
+        # }
+
+        # infoUrlObj = {
+        #   "title" : json["outline"][1]["-text"]
+        #   "href" : json["outline"][1]["-_note"]
+        # }
+      
+        # jsonObj = {
+        #   "inPort" : regExpMatchResult[1]
+        #   "outPort" : regExpMatchResult[3]
+        #   "desc" : descObj
+        #   "infoUrl" : infoUrlObj
+        # }
+
+        str_array.push(
+          '\n{\n' +
+          ' "inPort" : " ' + regExpMatchResult[1] + ' ",\n' + 
+          ' "outPort" : " ' + regExpMatchResult[3] + ' ", \n' +
+          ' "desc" : {  "title" : ' + json["outline"][0]["-text"] + ', "content" : ' + json["outline"][0]["-_note"] + ' } "  ,\n' +
+          ' "infoUrl" : {  "title" : ' + json["outline"][1]["-text"] + ', "href" : ' + json["outline"][1]["-_note"] + ' } "  ,\n' +
+          '}\n')
+
+      
+      jQuery(".body .part-right textarea").val("["+str_array+"]")
 
 jQuery(document).on "ready page:load", ->
   if jQuery(".text-xml2json").length > 0
