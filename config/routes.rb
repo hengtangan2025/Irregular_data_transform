@@ -10,8 +10,11 @@ Rails.application.routes.draw do
       get 'graphviz'
       get 'graphviz_to_gml'
       post 'graphviz_to_gml_progarm'
+      get 'save_and_query_jsons'
+      post 'query_json'
     end
   end
+  resources :json_datas
 
 
   # The priority is based upon order of creation: first created -> highest priority.

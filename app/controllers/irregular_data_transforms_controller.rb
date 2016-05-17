@@ -23,6 +23,30 @@ class IrregularDataTransformsController < ApplicationController
   def graphviz_to_gml
   end
 
+  def save_and_query_jsons
+  end
+
+  def query_json
+    render_arrays =[]
+    arrays =
+    JsonData.where(:outport=>Regexp.new(params[:query_json])).all.to_a+
+    JsonData.where(:inport=>Regexp.new(params[:query_json])).all.to_a
+    arrays = arrays.uniq
+    arrays.each do |a|
+      hash = {}
+      hash[:inPort] = a.inport
+      hash[:outPort] = a.outport
+      hash[:desc]={}
+      hash[:desc][:title] = a.desc_title
+      hash[:desc][:content] = a.desc_content
+      hash[:infoUrl]={}
+      hash[:infoUrl][:title] = a.info_url_title
+      hash[:infoUrl][:href] = a.info_url_href
+      render_arrays.push(hash)
+    end
+    render :json =>{:result => render_arrays.to_json}
+  end
+
   def graphviz_to_gml_progarm
     dot_file = File.new(File.join("./public","graphviz.dot"), "w+")
     dot_file.puts(params[:graphviz])
