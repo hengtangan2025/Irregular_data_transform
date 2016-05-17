@@ -14,7 +14,7 @@ class Xml2json
       
       for json in jsonArray
         text = json["-text"]
-        regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^\\n]+)"
+        regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^#\\n]+)"
         regExpForhintPipe = new RegExp(regExp, "g")
         regExpMatchResult = regExpForhintPipe.exec(text)
 
@@ -37,8 +37,8 @@ class Xml2json
 
         str_array.push(
           '\n{\n' +
-          ' "inPort" : " ' + regExpMatchResult[1] + ' ",\n' + 
-          ' "outPort" : " ' + regExpMatchResult[3] + ' ", \n' +
+          ' "inPort" : "' + regExpMatchResult[1] + '",\n' + 
+          ' "outPort" : "' + regExpMatchResult[3] + '",\n' +
           ' "desc" : {  "title" : ' + json["outline"][0]["-text"] + ', "content" : ' + json["outline"][0]["-_note"] + ' } "  ,\n' +
           ' "infoUrl" : {  "title" : ' + json["outline"][1]["-text"] + ', "href" : ' + json["outline"][1]["-_note"] + ' } "  ,\n' +
           '}\n')
