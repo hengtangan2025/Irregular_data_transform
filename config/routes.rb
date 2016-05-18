@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post 'graphviz_to_gml_progarm'
       get 'save_and_query_jsons'
       post 'query_json'
+      get 'xml2json'
     end
   end
   resources :json_datas

@@ -1,47 +1,40 @@
-digraph G {
-  rankdir=LR;
-  graph [fontname="simhei" splines="polyline"]
-  edge  [fontname="simhei"]
-  node  [fontname="simhei" shape="note" width="1.68" height="0.1"]
-  "团队观点分歧被发现" [fillcolor="#CCFFCC" shape=note style=filled]
-  "技术踩坑经验被发现" [shape=note style=filled fillcolor="#CCFFCC"]
-  "线下讨论要点记录手段已具备" [fillcolor="#CCFFCC" shape=note style=filled]
-  "知识分享过程录音手段已具备" [fillcolor="#CCFFCC" shape=note style=filled]
-  "线上聊天日志存储手段已具备" [style=filled shape=note fillcolor="#CCFFCC"]
-  "知识分享文章发布手段已具备" [style=filled shape=note fillcolor="#CCFFCC"]
-  "知识提交物生成手段已具备" [fillcolor="#CCFFCC" shape=note style=filled]
-  "值得记录的知识已显现" [shape=note style=filled fillcolor="#CCFFCC"]
-  "值得提炼的知识文档已生成" [fillcolor="#CCFFCC" style=filled shape=note]
-  "知识文档中的关键词已被提取" [fillcolor="#C0C0C0" style=filled shape=note]
-  "必要条件集合已生成" [shape=note style=filled fillcolor="#C0C0C0"]
-  "必要条件依赖网络生长过程已开始" [fillcolor="#C0C0C0" style=filled shape=note]
-  "必要条件集合的基本操作已实现" [fillcolor="#C0C0C0" shape=note style=filled]
-  "必要条件集合求交集操作已实现" [style=filled shape=note fillcolor="#C0C0C0"]
-  "必要条件集合求并集操作已实现" [shape=note style=filled fillcolor="#C0C0C0"]
-  "必要条件集合减法操作已实现" [shape=note style=filled fillcolor="#C0C0C0"]
-  "必要条件检查器被应用" [shape=note style=filled fillcolor="#C0C0C0"]
-  "必要条件检查器已实现" [fillcolor="#C0C0C0" style=filled shape=note]
-  "工作推进中的疏漏被发现" [style=filled shape=note fillcolor="#C0C0C0"]
-  "必要条件的描述格式已确定" [fillcolor="#CCFFCC" shape=note style=filled]
-  "必要条件子集抽取操作已完成" [style=filled shape=note fillcolor="#C0C0C0"]
-  "线下讨论要点记录手段已具备" -> "知识提交物生成手段已具备"
-  "知识分享过程录音手段已具备" -> "知识提交物生成手段已具备"
-  "线上聊天日志存储手段已具备" -> "知识提交物生成手段已具备"
-  "知识分享文章发布手段已具备" -> "知识提交物生成手段已具备"
-  "团队观点分歧被发现" -> "值得记录的知识已显现"
-  "技术踩坑经验被发现" -> "值得记录的知识已显现"
-  "值得记录的知识已显现" -> "值得提炼的知识文档已生成"
-  "知识提交物生成手段已具备" -> "值得提炼的知识文档已生成"
-  "值得提炼的知识文档已生成" -> "知识文档中的关键词已被提取"
-  "知识文档中的关键词已被提取" -> "必要条件集合已生成"
-  "必要条件集合已生成" -> "必要条件依赖网络生长过程已开始"
-  "必要条件集合求交集操作已实现" -> "必要条件集合的基本操作已实现"
-  "必要条件集合求并集操作已实现" -> "必要条件集合的基本操作已实现"
-  "必要条件集合减法操作已实现" -> "必要条件集合的基本操作已实现"
-  "必要条件依赖网络生长过程已开始" -> "必要条件子集抽取操作已完成"
-  "必要条件集合的基本操作已实现" -> "必要条件依赖网络生长过程已开始"
-  "必要条件检查器已实现" -> "必要条件检查器被应用"
-  "必要条件检查器被应用" -> "工作推进中的疏漏被发现"
-  "必要条件的描述格式已确定" -> "必要条件集合已生成"
-  "必要条件子集抽取操作已完成" -> "必要条件检查器被应用"
+digraph {
+	graph [bb="0 0 441 252",
+		layout=dot,
+		rankdir=BT,
+		splines=polyline
+	];
+	node [label="\N"];
+	"%5"	 [IVPosition="-36,-17",
+		label=graphml2hintpipe,
+		shape=rectangle];
+	"%7"	 [IVPosition="97,40",
+		label=hintpipe2graphviz,
+		shape=rectangle];
+	"%5" -> "%7";
+	"%11"	 [IVPosition="273,135",
+		label=hintpipe2chatlog,
+		shape=rectangle];
+	"%5" -> "%11";
+	"%15"	 [IVPosition="-30,183",
+		label=hintpipe2storage,
+		shape=rectangle];
+	"%5" -> "%15";
+	"%25"	 [IVPosition="248,73",
+		label="colored-graphviz ",
+		shape=rectangle];
+	"%7" -> "%25";
+	"%29"	 [IVPosition="269,85",
+		label=graphviz2gml,
+		shape=rectangle];
+	"%7" -> "%29";
+	"%23"	 [IVPosition="97,2",
+		label=chatlog2yaml,
+		shape=rectangle];
+	"%11" -> "%23";
+	"%19"	 [IVPosition="-22,34",
+		label=chapteredtext2json,
+		shape=rectangle];
+	"%19" -> "%15";
+	"%25" -> "%29";
 }
