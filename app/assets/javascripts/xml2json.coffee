@@ -30,24 +30,6 @@ class Xml2json
         regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^#\\n]+)"
         regExpForhintPipe = new RegExp(regExp, "g")
         regExpMatchResult = regExpForhintPipe.exec(text)
-
-        # descObj = {
-        #   "title" : json["outline"][0]["-text"]
-        #   "content" : json["outline"][0]["-_note"]
-        # }
-
-        # infoUrlObj = {
-        #   "title" : json["outline"][1]["-text"]
-        #   "href" : json["outline"][1]["-_note"]
-        # }
-      
-        # jsonObj = {
-        #   "inPort" : regExpMatchResult[1]
-        #   "outPort" : regExpMatchResult[3]
-        #   "desc" : descObj
-        #   "infoUrl" : infoUrlObj
-        # }
-
         str_array.push(
           '\n{\n' +
           ' "inPort" : "' + regExpMatchResult[1] + '",\n' + 
@@ -71,6 +53,12 @@ class Xml2json
           '}\n')
 
       jQuery(".body .part-right textarea").val("["+str_array+"]")
+      $.ajax
+        url: "/json_datas",
+        method: "post",
+        data: {save_json: "["+str_array+"]" }
+      .success (msg) =>
+       alert msg
 
 jQuery(document).on "ready page:load", ->
   if jQuery(".text-xml2json").length > 0
