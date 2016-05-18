@@ -2,6 +2,20 @@ class Xml2json
   constructor: (@$eml) ->
     @bind_event()
 
+  replace_chars: (text)->
+    text1 = @replaceSpecialChar(text, '\\\\(?!n)(?!t)', '\\/')
+    text2 = @replaceSpecialChar(text1, '\t', '  ')
+    text3 = @replaceSpecialChar(text2, '\n', '\\n')
+    text4 = @replaceSpecialChar(text3, '"', '\\"')
+    text5 = @replaceSpecialChar(text4, '\'', '\\"')
+    text6 = @replaceSpecialChar(text5, ':', '：')
+    text7 = @replaceSpecialChar(text5, '，', ',')
+    return text7
+
+  replaceSpecialChar: (text, specialChar, safeChar)->
+    patternInRegexp = new RegExp(specialChar, 'g')
+    return text.replace(patternInRegexp, safeChar)
+
   bind_event: () ->
     @$eml.on "click", ".footer-button .xml-to-json",=>
       text_value = jQuery(".body .part-left textarea").val()
@@ -39,8 +53,8 @@ class Xml2json
           '\n{\n' +
           ' "inPort" : "' + regExpMatchResult[1] + '",\n' + 
           ' "outPort" : "' + regExpMatchResult[3] + '",\n' +
-          ' "desc" : {  "title" : ' + json["outline"][0]["-text"] + ', "content" : ' + json["outline"][0]["-_note"] + ' } "  ,\n' +
-          ' "infoUrl" : {  "title" : ' + json["outline"][1]["-text"] + ', "href" : ' + json["outline"][1]["-_note"] + ' } "  ,\n' +
+          ' "desc" : {  "title" : "' + @replace_chars(json["outline"][0]["-text"]) + '", "content" : "' + @replace_chars(json["outline"][0]["-_note"]) + '" } ,\n' +
+          ' "infoUrl" : {  "title" : "' + @replace_chars(json["outline"][1]["-text"]) + '", "href" : "' + @replace_chars(json["outline"][1]["-_note"]) + '" } \n' +
           '}\n')
 
       
