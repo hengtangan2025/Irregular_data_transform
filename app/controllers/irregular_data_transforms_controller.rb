@@ -3,6 +3,10 @@ class IrregularDataTransformsController < ApplicationController
     
   end
 
+  def transform_lists
+    render :layout => false 
+  end
+
 
   def transfer_page
     # @show_transfer_result = `#{params[:shell_command]}`
