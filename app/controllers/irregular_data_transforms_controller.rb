@@ -44,7 +44,8 @@ class IrregularDataTransformsController < ApplicationController
       hash[:infoUrl][:href] = a.info_url_href
       render_arrays.push(hash)
     end
-    render :json =>{:result => render_arrays.to_json}
+    render :json => render_arrays.to_json
+    # render :json =>{:result => render_arrays.to_json}
   end
 
   def graphviz_to_gml_progarm
