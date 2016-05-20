@@ -26,6 +26,9 @@ class IrregularDataTransformsController < ApplicationController
   def save_and_query_jsons
   end
 
+  def query_mind_photograph
+  end
+
   def query_json
     render_arrays =[]
     arrays =

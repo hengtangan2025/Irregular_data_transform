@@ -22,4 +22,10 @@ class JsonDatasController < ApplicationController
       render :text => "全部保存成功"
     end
   end
+
+  def new
+  end
+
+  def page_create 
+  end
 end

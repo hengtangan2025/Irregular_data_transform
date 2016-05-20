@@ -1,0 +1,10 @@
+.page-query-mind-photograph
+  .query-json-area
+    .query-area
+      =text_area_tag 'transferd_string', nil, rows: 1, cols: 45, placeholder: "输入查询名称" ,class: 'query_blank'
+      %button.query-json-btn{:title =>"查询—查询-查询-查询"} 查询
+
+    %p{:id => "find_result"}
+    %p{:id => "debugInfo"}
+    %input{:type => 'hidden',:id => "hintPipes"}
+    %p{:id => "output"}
