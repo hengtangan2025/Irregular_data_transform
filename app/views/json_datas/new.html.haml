@@ -1,4 +1,8 @@
 .page-enter-data
+  %h2 录入数据
+  .notice
+    = notice
+  %hr
   = form_for :json_data, :url => {:action => :enter_data}, :method => :post  do |f|
     .input-outport
       = '前置知识'

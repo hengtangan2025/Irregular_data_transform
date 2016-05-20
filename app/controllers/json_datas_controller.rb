@@ -12,7 +12,7 @@ class JsonDatasController < ApplicationController
         :info_url_title=> "参考链接",
         :info_url_href=> params[:json_data][:info_url_href])
     if data.save
-      redirect_to "/json_datas/new"
+      redirect_to "/json_datas/new",:notice=>'保存成功'
     end
   end
 
