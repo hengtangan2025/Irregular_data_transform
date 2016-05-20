@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :json_datas do
     collection do
       post 'page_create'
+      post 'enter_data'
     end
   end
 

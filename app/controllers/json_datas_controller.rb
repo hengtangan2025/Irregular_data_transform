@@ -1,4 +1,20 @@
 class JsonDatasController < ApplicationController
+  def new
+    @json_data = JsonData.new
+  end
+
+  def enter_data
+    data = JsonData.create(
+        :inport=> params[:json_data][:inport],
+        :outport=> params[:json_data][:outport],
+        :desc_title=> "内容概要",
+        :desc_content=> params[:json_data][:desc_content],
+        :info_url_title=> "参考链接",
+        :info_url_href=> params[:json_data][:info_url_href])
+    if data.save
+      redirect_to "/json_datas/new"
+    end
+  end
 
   def create
     json_datas = JSON.parse(params[:save_json])
