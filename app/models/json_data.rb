@@ -7,4 +7,6 @@ class JsonData
   field :desc_content, :type => String
   field :info_url_title, :type => String
   field :info_url_href, :type => String
+  validates :inport, :presence => true
+  validates :outport, :presence => true
 end

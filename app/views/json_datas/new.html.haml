@@ -1,7 +1,12 @@
 .page-enter-data
   %h2 录入数据
-  .notice
-    = notice
+  -if !notice.nil?
+    -if notice == '保存成功'
+      .notice
+        = notice
+    -else
+      .notice
+        %p 前置知识和后置知识不为空
   %hr
   = form_for :json_data, :url => {:action => :enter_data}, :method => :post  do |f|
     .input-outport
