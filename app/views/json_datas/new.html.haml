@@ -1,0 +1,18 @@
+.page-enter-data
+  = form_for :json_data, :url => {:action => :enter_data}, :method => :post  do |f|
+    .input-outport
+      = '前置知识'
+      = f.text_field 'inport'
+      = '后置知识'
+      = f.text_field 'outport'
+    .desc
+      = "内容概要"
+      .content
+      = f.text_area 'desc_content'
+    .link
+      = "参考链接"
+      = f.text_field 'info_url_href'
+    %button.btn.btn-defualt
+      = '提交'
+    %button.btn.btn-defualt
+      %a{:href => "/json_datas/new"}= '取消'
