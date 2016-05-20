@@ -57,6 +57,36 @@ class QueryMindPhotograph
     svg = @gvParser.parseFromString(@gvResult, "image/svg+xml")
     graph.appendChild(svg.documentElement)
 
+  hintPipeAddColor: (hintPipeObjWithNumber)->
+    switch hintPipeObjWithNumber
+      when 10 then TextWithColor = "#030387"
+      when 9 then TextWithColor = "#181891"
+      when 8 then TextWithColor = "#2D2D9B" 
+      when 7 then TextWithColor = "#4242A5" 
+      when 6 then TextWithColor = "#5757AF"
+      when 5 then TextWithColor = "#6C6CB9"
+      when 4 then TextWithColor = "#8181C3" 
+      when 3 then TextWithColor = "#9696CD"
+      when 2 then TextWithColor = "#ABABD7"
+      when 1 then TextWithColor = "#C0C0E1"
+    
+    return TextWithColor
+
+  hintPipeAddNumber: (hintPipeObjArray,i)->
+    listMap = { }
+    for hintPipeObj in hintPipeObjArray
+      key = hintPipeObj["inPort"]
+
+      if !!listMap[key]
+        listMap[key]++
+      else
+        listMap[key] = 1
+
+
+    key = hintPipeObjArray[i]["inPort"]    
+    hintPipeObjWithNumber = listMap[key]
+
+
 
   renderHintsNetGraph: (hintPipeSet,searchKeyword) =>
     hintPipeSetJson = JSON.parse(hintPipeSet);
@@ -68,11 +98,16 @@ class QueryMindPhotograph
       '  edge  [fontname="simhei" arrowsize="0.6"]\n' +
       '  node  [fontname="simhei" fontsize="9px" shape="note" height="0.1" style="filled" fillcolor="khaki1"] \n';
     for i in [0...numOfHintPipes]
+      number =  @hintPipeAddNumber(hintPipeSetJson,i)
+      color = @hintPipeAddColor(number)
       output +=
+        hintPipeSetJson[i]["inPort"] + 
+        '[color="' + color + '" fillcolor="' + color + '"]' + '\n' +
         hintPipeSetJson[i]["inPort"] +
         " -> " +
         hintPipeSetJson[i]["outPort"] +
-        '[label="..." labeltooltip="' + hintPipeSetJson[i]["purposeTags"] + '"]' + 
+        + '[color="' + color + '"]' +
+        '[label="..." labeltooltip="' + hintPipeSetJson[i]["purposeTags"] + '"]' +
         "\n";
     document.getElementById("hintPipes").innerHTML = output + '} ';
     @updateGraph();
