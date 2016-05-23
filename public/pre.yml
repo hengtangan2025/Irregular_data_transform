@@ -1,0 +1,16 @@
+npcs:
+  - id: "李博超"
+    name: 李博超
+    avatar: http://i.teamkn.com/i/IyuvIgoJ.png?imageMogr2/thumbnail/100x
+    direction: left
+    
+scripts:
+- npc: "谢行知"
+  sentences:
+  - text: "test example"
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false

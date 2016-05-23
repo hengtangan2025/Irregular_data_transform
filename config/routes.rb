@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       get 'graphviz'
       get 'graphviz_to_gml'
       post 'graphviz_to_gml_progarm'
+
+      post 'convert'
+      post 'save_file_to_local'
+      get 'down_load'
+
       get 'save_and_query_jsons'
       post 'query_json'
       get 'xml2json'
