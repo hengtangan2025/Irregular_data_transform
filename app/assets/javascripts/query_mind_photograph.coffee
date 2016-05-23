@@ -86,8 +86,6 @@ class QueryMindPhotograph
     key = hintPipeObjArray[i]["inPort"]    
     hintPipeObjWithNumber = listMap[key]
 
-
-
   renderHintsNetGraph: (hintPipeSet,searchKeyword) =>
     hintPipeSetJson = JSON.parse(hintPipeSet);
     numOfHintPipes = hintPipeSetJson.length;
@@ -106,7 +104,7 @@ class QueryMindPhotograph
         hintPipeSetJson[i]["inPort"] +
         " -> " +
         hintPipeSetJson[i]["outPort"] +
-        + '[color="' + color + '"]' +
+        '[color="' + color + '"]' +
         '[label="..." labeltooltip="' + hintPipeSetJson[i]["purposeTags"] + '"]' +
         "\n";
     document.getElementById("hintPipes").innerHTML = output + '} ';
@@ -121,6 +119,21 @@ class QueryMindPhotograph
         data: {query_json: query_json_value }
       .success (msg) =>
         @renderHintsNetGraph(msg.result,query_json_value)
+
+    @$eml.on "click", ".submit-json",=>
+      inport_value = @$eml.find('.json-data-input input').val()
+      output_value = @$eml.find('.json-data-output input').val()
+      if inport_value is "" || output_value is ""
+        alert "当前关注点和后续关注点不为空"
+      else
+        json = {json_data:{inport:inport_value,outport:output_value}};
+        $.ajax
+          url: "/json_datas/enter_data",
+          method: "post",
+          data: json
+        .success (msg) =>
+          alert(msg)
+
 
 jQuery(document).on "ready page:load", ->
   if jQuery(".page-query-mind-photograph").length > 0
