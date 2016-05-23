@@ -103,10 +103,11 @@ class QueryMindPhotograph
       output +=
         hintPipeSetJson[i]["inPort"] + 
         '[color="' + color + '" fillcolor="' + color + '"]' + '\n' +
+        hintPipeSetJson[i]["outPort"] +
+        '[color="' + color + '"]' + '\n' +
         hintPipeSetJson[i]["inPort"] +
         " -> " +
         hintPipeSetJson[i]["outPort"] +
-        + '[color="' + color + '"]' +
         '[label="..." labeltooltip="' + hintPipeSetJson[i]["purposeTags"] + '"]' +
         "\n";
     document.getElementById("hintPipes").innerHTML = output + '} ';
