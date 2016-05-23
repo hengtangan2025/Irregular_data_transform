@@ -20,7 +20,6 @@ class Xml2json
     @$eml.on "click", ".footer-button .xml-to-json",=>
       text_value = jQuery(".body .part-left textarea").val()
       xotree = new XML.ObjTree
-      # dumper = new JKL.Dumper()
       tree = xotree.parseXML(text_value)
       str_array = []
       jsonArray = tree["opml"]["body"]["outline"]["outline"]
