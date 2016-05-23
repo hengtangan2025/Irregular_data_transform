@@ -6,8 +6,12 @@ class IrregularDataTransformsController < ApplicationController
     
   end
 
+  def transform_lists
+    render :layout => false 
+  end
+
   def transfer_page
-    @show_transfer_result = `#{params[:shell_command]}`
+    # @show_transfer_result = `#{params[:shell_command]}`
   end
 
   def transfer_action
@@ -15,13 +19,41 @@ class IrregularDataTransformsController < ApplicationController
     will_transfer_file = params[:transfer_file]
     will_transfer_file_path = File.join("public",will_transfer_file.original_filename)
     FileUtils.cp will_transfer_file.path, will_transfer_file_path
-    redirect_to :action => "transfer_page", :shell_command => "./public/graphml2hintpipe.pl ./public/#{will_transfer_file.original_filename}"
+    render :xml => {:strs => `./public/graphml2hintpipe.pl ./public/#{will_transfer_file.original_filename}`}.to_xml
+    # redirect_to :action => "transfer_page", :shell_command => "./public/graphml2hintpipe.pl ./public/#{will_transfer_file.original_filename}"
   end
 
   def graphviz 
   end
 
   def graphviz_to_gml
+  end
+
+  def save_and_query_jsons
+  end
+
+  def query_mind_photograph
+  end
+
+  def query_json
+    render_arrays =[]
+    arrays =
+    JsonData.where(:outport=>Regexp.new(params[:query_json])).all.to_a+
+    JsonData.where(:inport=>Regexp.new(params[:query_json])).all.to_a
+    arrays = arrays.uniq
+    arrays.each do |a|
+      hash = {}
+      hash[:inPort] = a.inport
+      hash[:outPort] = a.outport
+      hash[:desc]={}
+      hash[:desc][:title] = a.desc_title
+      hash[:desc][:content] = a.desc_content
+      hash[:infoUrl]={}
+      hash[:infoUrl][:title] = a.info_url_title
+      hash[:infoUrl][:href] = a.info_url_href
+      render_arrays.push(hash)
+    end
+    render :json =>{:result => render_arrays.to_json}
   end
 
   def graphviz_to_gml_progarm
@@ -55,6 +87,10 @@ class IrregularDataTransformsController < ApplicationController
     send_file("./public/convert_file/convert.yml",disposition: "attachment", :filename => "convert.yml", type: "application/yml")
   end
 
+  def xml2json
+    
+  end
+
   private
     def conver_qq(str, pre_path)
       date1 = /^[\d{2}:\d{2}:\d{2}]{8,}/
@@ -67,6 +103,7 @@ class IrregularDataTransformsController < ApplicationController
       values = str.split(pattern).delete_if(&:blank?)
 
       data = {}
+      data['npcs'] = []
       data['scripts'] = []
       items.each_with_index do |item, index|
         if values[index].nil?
@@ -76,14 +113,23 @@ class IrregularDataTransformsController < ApplicationController
 
         yml_file = YAML::load_file(pre_path)
 
+        yml_file['npcs'][0]['id'] = items[index].gsub(/\d{4}\/\d{1,2}\/\d{1,2} \d{2}:\d{2}:\d{2}/, '').strip
+        yml_file['npcs'][0]['name'] = items[index].gsub(/\d{4}\/\d{1,2}\/\d{1,2} \d{2}:\d{2}:\d{2}/, '').strip
+
+
         yml_file['scripts'][0]['npc'] = items[index].gsub(/\d{4}\/\d{1,2}\/\d{1,2} \d{2}:\d{2}:\d{2}/, '').strip
 
         value = values[index].gsub(/\r\n/,'').gsub(/@/, '').gsub(/:/, '').gsub(/\r/, '')
         yml_file['scripts'][0]['sentences'][0]['text'] = value
 
+        
         data['scripts'] << yml_file['scripts'][0]
+        data['npcs'] << yml_file['npcs'][0]
       end
+      data['npcs'] = data['npcs'].uniq
+      data_last = data['npcs'].last
+      data_last['direction'] = "right"
+      data_last['avatar'] = "http://img.teamkn.com/i/B5VSfH2U.png@100w_100h_1e_1c.png"
       data
     end
-
 end

@@ -1,0 +1,18 @@
+.page-save-and-query-jsons{
+
+  .transform-area{  
+     .save-json-area{
+      float: left;
+      margin: 30px;
+    }
+
+    .query-json-area{
+       margin: 30px;
+       float: right;
+    }
+    display:block;
+  }
+  .foot{
+    clear:both;
+  }
+}

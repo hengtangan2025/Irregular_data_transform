@@ -1,0 +1,21 @@
+.page-transfer-page{
+
+  .transform-area{  
+    #upload-div{
+      width: 400px;
+      height: 400px;
+      background-color:#A4CEF2;
+      float: left;
+      margin: 30px;
+    }
+
+    .transformed-graphml-blank-area{
+       margin: 30px;
+       float: right;
+    }
+    display:block;
+  }
+  .foot{
+    clear:both;
+  }
+}

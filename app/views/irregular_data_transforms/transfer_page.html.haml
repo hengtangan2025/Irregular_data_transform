@@ -1,10 +1,16 @@
 .page-transfer-page
   %h2 graphml转换
   %hr
-  =form_tag '/transfer_action',:multipart => true
-  =file_field_tag 'transfer_file'
-  =submit_tag "转换"
-  -if  @show_transfer_result.present?
-    =text_area_tag 'transferd_string',@show_transfer_result, rows: 30, cols: 75 
-  -else
-    =text_area_tag 'transferd_string', nil, rows: 30, cols: 75, placeholder: "上传文件转换文字"
+  .transform-area
+    #upload-div 将图片拖拽到此区域
+    / =form_tag '/transfer_action',:multipart => true
+    / =file_field_tag 'transfer_file'
+    / =submit_tag "转换",:title=>'graphml图的源码转换成a|->|b 列表格式'
+    .transformed-graphml-blank-area
+      -if  @show_transfer_result.present?
+        =text_area_tag 'transferd_string',@show_transfer_result, rows: 30, cols: 75 
+      -else
+        =text_area_tag 'transferd_string', nil, rows: 30, cols: 75, placeholder: "上传文件转换文字" ,class: 'transformed_graphml_blank'
+  .foot
+    %hr
+    %hr

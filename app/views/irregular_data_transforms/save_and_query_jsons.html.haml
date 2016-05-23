@@ -1,0 +1,16 @@
+.page-save-and-query-jsons
+  %h2 json数据保存与查询
+  %hr
+  .transform-area
+    .save-json-area
+      =text_area_tag 'transferd_string', nil, rows: 30, cols: 75, placeholder: "上传文件转换文字" ,class: 'save_json_blank'
+      .save-btn
+        %button.save-json-btn{:title =>"保存"} 保存
+
+    .query-json-area
+      .query-area
+        =text_area_tag 'transferd_string', nil, rows: 1, cols: 45, placeholder: "输入查询名称" ,class: 'query_blank'
+        %button.query-json-btn{:title =>"查询—查询-查询-查询"} 查询
+      =text_area_tag 'transferd_string', nil, rows: 20, cols: 75, placeholder: "查询结果" ,class: 'query_blank_results'
+  .foot
+    %hr

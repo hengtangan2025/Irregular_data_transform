@@ -17,11 +17,11 @@
     %hr
 
   .footer-button
-    %button.colon 冒号改换行符批处理
-    %button.chinese-sequence-paren 带(中文序号)的内容小节拆分
-    %button.figure-sequence 带阿拉伯数字序号的内容小节拆分
-    %button.chinese-sequence 带中文序号的内容小节拆分
-    %button.chatflow-qq QQ聊天纪录生成对话泡泡YAML 
+    %button.colon{:title =>"功能还在开发中"}冒号改换行符批处理
+    %button.chinese-sequence-paren{:title =>"把业务操作手册里小节号为‘（一）’这种类型的进行拆分，并且转换成json字符串"} 带(中文序号)的内容小节拆分
+    %button.figure-sequence{:title =>"把业务操作手册里小节号为‘1、’这种类型的进行拆分，并且转换成json字符串"} 带阿拉伯数字序号的内容小节拆分
+    %button.chinese-sequence{:title =>"把业务操作手册里小节号为‘一、’这种类型的进行拆分，并且转换成json字符串"} 带中文序号的内容小节拆分
+    %button.chatflow-qq{:title => "把QQ的聊天纪录根据聊天id进行拆分，并且转换成YAML（只支持两人对话,不支持特殊字符）"} QQ聊天纪录生成对话泡泡YAML 
 
   .footer-line
     %hr
