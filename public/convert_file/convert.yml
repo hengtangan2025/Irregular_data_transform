@@ -1,128 +1,215 @@
 ---
 npcs:
-- id: "李博超"
-  name: "李博超"
+- id: "王万新"
+  name: "王万新"
   avatar: http://i.teamkn.com/i/IyuvIgoJ.png?imageMogr2/thumbnail/100x
   direction: left
-- id: "吴笛"
-  name: "吴笛"
+- id: "会飞的猪"
+  name: "会飞的猪"
   avatar: http://img.teamkn.com/i/B5VSfH2U.png@100w_100h_1e_1c.png
   direction: right
 scripts:
-- npc: "李博超"
+- npc: "王万新"
   sentences:
-  - text: "邹彩虹说 一天80的补贴啥意思\n她说你以前就是这么报销的 \n机票 + 一天80补贴。。 \n"
+  - text: |+
+      看不进去
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "吴笛"
+- npc: "王万新"
   sentences:
-  - text: |
-      可能是出差时的补贴，这个月就能报吗？
-      我不在北京这个月也不好弄啊
+  - text: |+
+      现在
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "李博超"
+- npc: "会飞的猪"
   sentences:
-  - text: |
-      不知道 我先把通用报销忙完
+  - text: |+
+      习惯都是养成的
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "吴笛"
+- npc: "会飞的猪"
   sentences:
-  - text: |
-      把每月常规的先报完
+  - text: |+
+      真的
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "李博超"
+- npc: "会飞的猪"
   sentences:
-  - text: |
-      嗯 这个应该可以跨月
-      我说等吴笛回来一起报行不，她说行
-      没说这个月必须报销
+  - text: |+
+      慢慢养成这个习惯 以后就好了
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "吴笛"
+- npc: "会飞的猪"
   sentences:
-  - text: |
-      对的。
-      你只关心你自己的常规报销和出差报销，然后关心一下陈啸峰和我的常规报销。
+  - text: |+
+      以后就很自然了
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "吴笛"
+- npc: "王万新"
   sentences:
-  - text: |
-      发票什么的整理得差不多了吗，需要我填写 ERP 吗？
+  - text: |+
+      环境不一样了嘛
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "李博超"
+- npc: "会飞的猪"
   sentences:
-  - text: "待会 \n等半个小时我叫你 \n"
+  - text: |+
+      现在你先不要着急  不要想一口吃一个胖子
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "吴笛"
+- npc: "会飞的猪"
   sentences:
-  - text: |
-      下班之前找我吧。
+  - text: |+
+      你现在先计划一天看十页书
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "李博超"
+- npc: "会飞的猪"
   sentences:
-  - text: "好 肯定的 \n"
+  - text: |+
+      到时候就渐渐地好了
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "吴笛"
+- npc: "会飞的猪"
   sentences:
-  - text: |
-      可以填写了
+  - text: |+
+      十页书应该不难吧
+
     speed: 20
     style:
       display: block
       padding-top: 8%
     delay: 400
   clear: false
-- npc: "李博超"
+- npc: "王万新"
   sentences:
-  - text: "把单据拍照发给我对照一下"
+  - text: |+
+      现在一页都难
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      亲
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      哈哈
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      心定不下来
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      环境，心态都变了
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      那就像办法让自己静下来
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      不要让外界影响到你
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: "调整自己的状态"
     speed: 20
     style:
       display: block
