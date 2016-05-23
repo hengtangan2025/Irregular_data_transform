@@ -26,7 +26,7 @@ class Xml2json
 
       for json in jsonArray
         text = json["-text"]
-        regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^#\\n]+)"
+        regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^#\\n]+) " + "([^\\n]+(?!#)|(?!@))"
         regExpForhintPipe = new RegExp(regExp, "g")
         regExpMatchResult = regExpForhintPipe.exec(text)
 
@@ -35,6 +35,7 @@ class Xml2json
             '\n{\n' +
             ' "inPort" : "' + regExpMatchResult[1] + '",\n' + 
             ' "outPort" : "' + regExpMatchResult[3] + '",\n' +
+            ' "tags" : "' + regExpMatchResult[4] + '",\n' +
             ' "desc" : {  "title" : "' + @replace_chars(json["outline"][0]["-text"]) + '", "content" : "' + @replace_chars(json["outline"][0]["-_note"]) + '" } ,\n' +
             ' "infoUrl" : {  "title" : "' + @replace_chars(json["outline"][1]["-text"]) + '", "href" : "' + @replace_chars(json["outline"][1]["-_note"]) + '" } \n' +
             '}\n')
@@ -43,12 +44,13 @@ class Xml2json
             '\n{\n' +
             ' "inPort" : "' + regExpMatchResult[1] + '",\n' + 
             ' "outPort" : "' + regExpMatchResult[3] + '",\n' +
+            ' "tags" : "' + regExpMatchResult[4] + '",\n' +
             '}\n')
 
            
       if str_array.length == 0
         text = jsonArray["-text"]
-        regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^#\\n]+)"
+        regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^#@\\n]+)" + "([^\\n]+(?!#)|(?!@))"
         regExpForhintPipe = new RegExp(regExp, "g")
         regExpMatchResult = regExpForhintPipe.exec(text)
         if jsonArray["outline"]
@@ -56,6 +58,7 @@ class Xml2json
             '\n{\n' +
             ' "inPort" : "' + regExpMatchResult[1] + '",\n' + 
             ' "outPort" : "' + regExpMatchResult[3] + '",\n' +
+            ' "tags" : "' + regExpMatchResult[4] + '",\n' +
             ' "desc" : {  "title" : "' + @replace_chars(jsonArray["outline"][0]["-text"]) + '", "content" : "' + @replace_chars(jsonArray["outline"][0]["-_note"]) + '" } ,\n' +
             ' "infoUrl" : {  "title" : "' + @replace_chars(jsonArray["outline"][1]["-text"]) + '", "href" : "' + @replace_chars(jsonArray["outline"][1]["-_note"]) + '" } \n' +
             '}\n')
@@ -64,6 +67,7 @@ class Xml2json
             '\n{\n' +
             ' "inPort" : "' + regExpMatchResult[1] + '",\n' + 
             ' "outPort" : "' + regExpMatchResult[3] + '",\n' +
+            ' "tags" : "' + regExpMatchResult[4] + '",\n' +
             '}\n')
 
       jQuery(".body .part-right textarea").val("["+str_array+"]")
