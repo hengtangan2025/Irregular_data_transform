@@ -78,6 +78,40 @@ class Xml2json
       .success (msg) =>
        alert msg
 
+    # json2xml
+    @$eml.on "click", ".footer-button .json-to-xml",=>
+      text_value = jQuery(".body .part-left textarea").val()
+      xotree = new XML.ObjTree
+      json = eval("("+text_value+")")
+
+      data = '{'+'\n'+
+        '"opml": {' +'\n'+
+          '"-version": "2.0",' +'\n'+
+          '"head": { "ownerEmail": "anonymous@hintsnet.com" },'+ '\n' +
+          '"body": {'+'\n'+
+            '"outline": {'+'\n'+
+             '"-text": "workflowy格式数据样板",'+'\n'+
+              '"outline": {'+'\n'+
+                '"-text": "'+json["inPort"]+'|-&gt;|'+json["outPort"]+'",'+'\n'+
+                '"outline": ['+'\n'+
+                  '{'+'\n'+
+                    '"-text": "'+json["desc"]["title"]+'",'+'\n'+
+                    '"-_note": "'+json["desc"]["content"]+'"'+'\n'+
+                  '},'+'\n'+
+                  '{'+'\n'+
+                    '"-text": "'+json["infoUrl"]["title"]+'",'+'\n'+
+                    '"-_note": "'+json["infoUrl"]["href"]+'"'+'\n'+
+                  '}'+'\n'+
+                ']'+'\n'+
+              '}'+'\n'+
+            '}'+'\n'+
+          '}'+'\n'+
+        '}'+'\n'+
+      '}'
+      json_data = eval("("+data+")")
+      jQuery(".body .part-right textarea").val(formatXml(xotree.writeXML(json_data)))
+
+
 jQuery(document).on "ready page:load", ->
   if jQuery(".text-xml2json").length > 0
     new Xml2json jQuery(".text-xml2json")
