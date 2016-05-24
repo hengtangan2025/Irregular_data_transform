@@ -21,7 +21,8 @@
     %button.chinese-sequence-paren{:title =>"把业务操作手册里小节号为‘（一）’这种类型的进行拆分，并且转换成json字符串"} 带(中文序号)的内容小节拆分
     %button.figure-sequence{:title =>"把业务操作手册里小节号为‘1、’这种类型的进行拆分，并且转换成json字符串"} 带阿拉伯数字序号的内容小节拆分
     %button.chinese-sequence{:title =>"把业务操作手册里小节号为‘一、’这种类型的进行拆分，并且转换成json字符串"} 带中文序号的内容小节拆分
-    %button.chatflow-qq{:title => "把QQ的聊天纪录根据聊天id进行拆分，并且转换成YAML（只支持两人对话,不支持特殊字符）"} QQ聊天纪录生成对话泡泡YAML 
+    %button.chatflow-qq{:title => "把QQ的聊天纪录根据聊天id进行拆分，并且转换成YAML（只支持两人对话,不支持特殊字符）", data: {chat_type: "QQ"}} QQ聊天纪录生成对话泡泡YAML
+    %button.chatflow-wechat{:title => "把网页微信的聊天纪录根据聊天id进行拆分，并且转换成YAML（只支持两人对话,不支持特殊字符）", data: {chat_type: "wechat"}} 网页版微信聊天纪录生成对话泡泡YAML 
 
   .footer-line
     %hr
