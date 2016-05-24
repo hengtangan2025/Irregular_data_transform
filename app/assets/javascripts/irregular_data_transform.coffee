@@ -59,6 +59,17 @@ class Conversion
   convert_sent_get: ()->
     location.href = "/irregular_data_transforms/down_load"
 
+  # 获得输入的数据发post到后台进行格式转换
+  conversion_to_RegExp: (text_value, chat_type_data)->
+    jQuery.ajax
+      url: "/irregular_data_transforms/convert",
+      method: "post",
+      data: {chat_text: text_value, chat_type: chat_type_data}
+    .success (msg) ->
+      jQuery(".body .part-right textarea").val(msg)
+    .error (msg) ->
+      console.log(msg)
+
   bind_event: ->
     # 带括号的中文标题
     @$eml.on "click", ".footer-button .chinese-sequence-paren",=>
@@ -90,17 +101,17 @@ class Conversion
           '}\n')
        jQuery(".body .part-right textarea").val("["+str_array+"]")
 
-    # 对话泡泡
-    @$eml.on "click", ".footer-button .chatflow-qq", =>
+    # QQ聊天纪录转换成YMAL
+    @$eml.on "click", ".footer-button .chatflow-qq", ->
+      chat_type_data = jQuery(this).closest(".chatflow-qq").attr("data-chat-type")
       text_value = jQuery(".body .part-left textarea").val()
-      jQuery.ajax
-        url: "/irregular_data_transforms/convert",
-        method: "post",
-        data: {chat_text: text_value }
-      .success (msg) ->
-        jQuery(".body .part-right textarea").val(msg)
-      .error (msg) ->
-        console.log(msg)
+      @conversion_to_RegExp(text_value, chat_type_data)
+
+    # 微信聊天纪录转换成YAML
+    @$eml.on "click", ".footer-button .chatflow-wechat", ->
+      chat_type_data = jQuery(this).closest(".chatflow-wechat").attr("data-chat-type")
+      text_value = jQuery(".body .part-left textarea").val()
+      @conversion_to_RegExp(text_value, chat_type_data)
 
     #保存yaml文件并下载
     @$eml.on "click", ".body .save-script .save-file", =>

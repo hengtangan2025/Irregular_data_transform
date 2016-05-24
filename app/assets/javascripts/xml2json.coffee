@@ -79,7 +79,7 @@ class Xml2json
       text_value = jQuery(".body .part-left textarea").val()
       xotree = new XML.ObjTree
       json = eval("("+text_value+")")
-      if json.length > 1
+      if json.length > 0
         data = '{'+'\n'+
           '"opml": {' +'\n'+
             '"-version": "2.0",' +'\n'+
