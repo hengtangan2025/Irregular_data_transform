@@ -124,10 +124,11 @@ class QueryMindPhotograph
     @$eml.on "click", ".submit-json",=>
       inport_value = @$eml.find('.json-data-input input').val()
       output_value = @$eml.find('.json-data-output input').val()
+      desc_content_value = @$eml.find('.json-data-desc-content textarea').val()
       if inport_value is "" || output_value is ""
         alert "当前关注点和后续关注点不为空"
       else
-        json = {json_data:{inport:inport_value,outport:output_value}};
+        json = {json_data:{inport:inport_value,outport:output_value,desc_content:desc_content_value}};
         $.ajax
           url: "/json_datas/enter_data",
           method: "post",
