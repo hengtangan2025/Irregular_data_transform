@@ -30,7 +30,6 @@ class Xml2json
         regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^#\\n]+) " + "([^\\n]+(?!#)|(?!@))"
         regExpForhintPipe = new RegExp(regExp, "g")
         regExpMatchResult = regExpForhintPipe.exec(text)
-
         if json["outline"]
           str_array.push(
             '\n{\n' +
@@ -84,33 +83,51 @@ class Xml2json
       text_value = jQuery(".body .part-left textarea").val()
       xotree = new XML.ObjTree
       json = eval("("+text_value+")")
-
-      data = '{'+'\n'+
-        '"opml": {' +'\n'+
-          '"-version": "2.0",' +'\n'+
-          '"head": { "ownerEmail": "anonymous@hintsnet.com" },'+ '\n' +
-          '"body": {'+'\n'+
-            '"outline": {'+'\n'+
-             '"-text": "workflowy格式数据样板",'+'\n'+
+      if json.length > 0
+        data = '{'+'\n'+
+          '"opml": {' +'\n'+
+            '"-version": "2.0",' +'\n'+
+            '"head": { "ownerEmail": "anonymous@hintsnet.com" },'+ '\n' +
+            '"body": {'+'\n'+
               '"outline": {'+'\n'+
-                '"-text": "'+json["inPort"]+'|-&gt;|'+json["outPort"]+'",'+'\n'+
+                '"-text": "workflowy格式数据样板",'+'\n'+
                 '"outline": ['+'\n'+
-                  '{'+'\n'+
-                    '"-text": "'+json["desc"]["title"]+'",'+'\n'+
-                    '"-_note": "'+json["desc"]["content"]+'"'+'\n'+
-                  '},'+'\n'+
-                  '{'+'\n'+
-                    '"-text": "'+json["infoUrl"]["title"]+'",'+'\n'+
-                    '"-_note": "'+json["infoUrl"]["href"]+'"'+'\n'+
-                  '}'+'\n'+
+                jQuery.map(json, (ary) -> 
+                  return '{'+'\n'+'"-text": "'+ary["inPort"]+'|-&gt;|'+ary["outPort"]+'#hint-pipe #to-refine",'+'\n'+'"outline": ['+'\n'+'{'+'\n'+'"-text": "'+ary["desc"]["title"]+'",'+'\n'+'"-_note": "'+ary["desc"]["content"]+'"'+'\n'+'},'+'\n'+'{'+'\n'+'"-text": "'+ary["infoUrl"]["title"]+'",'+'\n'+'"-_note": "'+ary["infoUrl"]["href"]+'"'+'\n'+'}'+'\n'+']'+'\n'+'}'
+                )+'\n'+
                 ']'+'\n'+
               '}'+'\n'+
             '}'+'\n'+
           '}'+'\n'+
-        '}'+'\n'+
-      '}'
-      json_data = eval("("+data+")")
-      jQuery(".body .part-right textarea").val(formatXml(xotree.writeXML(json_data)))
+        '}'
+      else
+        data = '{'+'\n'+
+          '"opml": {' +'\n'+
+            '"-version": "2.0",' +'\n'+
+            '"head": { "ownerEmail": "anonymous@hintsnet.com" },'+ '\n' +
+            '"body": {'+'\n'+
+              '"outline": {'+'\n'+
+               '"-text": "workflowy格式数据样板",'+'\n'+
+                '"outline": {'+'\n'+
+                  '"-text": "'+json["inPort"]+'|-&gt;|'+json["outPort"]+'",'+'\n'+
+                  '"outline": ['+'\n'+
+                    '{'+'\n'+
+                      '"-text": "'+json["desc"]["title"]+'",'+'\n'+
+                      '"-_note": "'+json["desc"]["content"]+'"'+'\n'+
+                    '},'+'\n'+
+                    '{'+'\n'+
+                      '"-text": "'+json["infoUrl"]["title"]+'",'+'\n'+
+                      '"-_note": "'+json["infoUrl"]["href"]+'"'+'\n'+
+                    '}'+'\n'+
+                  ']'+'\n'+
+                '}'+'\n'+
+              '}'+'\n'+
+            '}'+'\n'+
+          '}'+'\n'+
+        '}'
+
+      json_datas = eval("("+data+")")
+      jQuery(".body .part-right textarea").val(formatXml(xotree.writeXML(json_datas)))
 
 
     @$eml.on "click", ".footer-button .xml-to-json-a-b",=>
