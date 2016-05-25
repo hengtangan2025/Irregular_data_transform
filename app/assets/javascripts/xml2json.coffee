@@ -147,9 +147,16 @@ class Xml2json
             ' "outPort" : "' + a[1] + '",\n' +
             ' "tags" : "' + '#hint-pipe #to-refine' + '",\n' +
             ' "desc" : {  "title" : "简要说明", "content" : "..." },\n'+
-            ' "infoUrl" : {  "title" : "参考链接", "href" : "..." },\n'+
+            ' "infoUrl" : {  "title" : "参考链接", "href" : "..." }\n'+
             '}\n')
       @$eml.find(".body .part-right textarea").val(print_data)
+
+      $.ajax
+        url: "/json_datas",
+        method: "post",
+        data: {save_json: "["+print_data+"]" }
+      .success (msg) =>
+       alert msg
 
   
   make_coupe_arrays:(ary)=>
