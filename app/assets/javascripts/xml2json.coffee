@@ -1,6 +1,7 @@
 class Xml2json
   constructor: (@$eml) ->
     @bind_event()
+    @coupe_arys = []
 
   replace_chars: (text)->
     text1 = @replaceSpecialChar(text, '\\\\(?!n)(?!t)', '\\/')
@@ -110,6 +111,45 @@ class Xml2json
       '}'
       json_data = eval("("+data+")")
       jQuery(".body .part-right textarea").val(formatXml(xotree.writeXML(json_data)))
+
+
+    @$eml.on "click", ".footer-button .xml-to-json-a-b",=>
+      text_value = jQuery(".body .part-left textarea").val()
+      xotree = new XML.ObjTree
+      tree = xotree.parseXML(text_value)
+      json_ary = tree["opml"]["body"]["outline"]["outline"]
+      @coupe_arys = []
+      @make_coupe_arrays(json_ary)
+      @coupe_arys.push(["...",json_ary[0]["-text"]])
+      @coupe_arys.push([json_ary[json_ary.length-1]["-text"],"..."])
+      print_data = []
+      for a in @coupe_arys
+        console.log(a)
+        print_data.push(
+            '\n{\n' +
+            ' "inPort" : "' + a[0] + '",\n' + 
+            ' "outPort" : "' + a[1] + '",\n' +
+            ' "tags" : "' + '"#hint-pipe #to-refine"' + '",\n' +
+            '"desc" : {  "title" : "简要说明", "content" : "..." },\n'+
+            '"infoUrl" : {  "title" : "参考链接", "href" : "..." },\n'+
+            '}\n')
+      @$eml.find(".body .part-right textarea").val(print_data)
+
+  
+  make_coupe_arrays:(ary)=>
+    if ary.length>1
+       for i in [0...ary.length-1]
+        @coupe_arys.push([ary[i]["-text"],ary[i+1]["-text"]])
+
+    for i in [0...ary.length]
+      if ary[i]['outline'] != undefined
+        child_ary = ary[i]['outline']
+        @coupe_arys.push([ary[i]["-text"],ary[i]['outline'][0]["-text"]])
+        @coupe_arys.push([ary[i]['outline'][child_ary.length-1]["-text"],ary[i+1]["-text"]])
+        @make_coupe_arrays(child_ary)
+
+
+
 
 
 jQuery(document).on "ready page:load", ->
