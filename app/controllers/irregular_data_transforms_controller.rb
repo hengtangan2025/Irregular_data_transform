@@ -56,6 +56,10 @@ class IrregularDataTransformsController < ApplicationController
     render :json =>{:result => render_arrays.to_json}
   end
 
+  def query_link
+    
+  end
+
   def graphviz_to_gml_progarm
     dot_file = File.new(File.join("./public","graphviz.dot"), "w+")
     dot_file.puts(params[:graphviz])
