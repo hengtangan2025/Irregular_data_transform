@@ -9,4 +9,5 @@ class JsonData
   field :info_url_href, :type => String
   validates :inport, :presence => true
   validates :outport, :presence => true
+
 end
