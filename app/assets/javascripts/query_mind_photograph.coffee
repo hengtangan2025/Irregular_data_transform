@@ -122,6 +122,23 @@ class QueryMindPhotograph
 
         @renderHintsNetGraph(msg.result,query_json_value)
 
+    @$eml.on "click", ".query-A-to-B-with-length-btn",=>
+      first_port = @$eml.find('.first_port').val()
+      last_port = @$eml.find('.last_port').val()
+      query_json_value = first_port + "->" + last_port
+      length = @$eml.find('.length').val()
+      $.ajax
+        url: "/irregular_data_transforms/query_A_to_B_with_length",
+        method: "post",
+        data: {
+          query_A : first_port,
+          query_B : last_port,
+          length : length
+       }
+      .success (msg) =>
+        console.log(msg.result)
+        @renderHintsNetGraph(msg.result,"a")
+
     @$eml.on "click", ".submit-json",=>
       inport_value = @$eml.find('.json-data-input input').val()
       output_value = @$eml.find('.json-data-output input').val()

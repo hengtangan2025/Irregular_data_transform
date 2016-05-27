@@ -4,6 +4,14 @@
     .query-area
       =text_area_tag 'transferd_string', nil, rows: 1, cols: 45, placeholder: "输入关键字" ,class: 'query_blank'
       %button.query-json-btn{:title =>"查询—查询-查询-查询"} 查询思路
+    .query_A_to_B_with_length
+      起点
+      =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入起点" ,class: 'first_port'
+      终点
+      =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入终点" ,class: 'last_port'
+      长度
+      =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入路径长度" ,class: 'length'
+      %button.query-A-to-B-with-length-btn{:title =>"查询—查询-查询-查询"} 查询思路
     %hr
   .body
     .part-left

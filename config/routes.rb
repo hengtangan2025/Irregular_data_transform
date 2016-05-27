@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
       get 'save_and_query_jsons'
       post 'query_json'
+      post 'query_A_to_B_with_length'
       get 'xml2json'
       get  'query_mind_photograph'
     end
