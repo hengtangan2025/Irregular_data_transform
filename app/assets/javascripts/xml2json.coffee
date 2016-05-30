@@ -143,14 +143,14 @@ class Xml2json
       for a in @coupe_arys
         print_data.push(
             '\n{\n' +
-            ' "inPort" : "' + a[0] + '",\n' + 
-            ' "outPort" : "' + a[1] + '",\n' +
+            ' "inPort" : "' + @replace_chars(a[0]) + '",\n' + 
+            ' "outPort" : "' + @replace_chars(a[1]) + '",\n' +
             ' "tags" : "' + '#hint-pipe #to-refine' + '",\n' +
             ' "desc" : {  "title" : "简要说明", "content" : "..." },\n'+
             ' "infoUrl" : {  "title" : "参考链接", "href" : "..." }\n'+
             '}\n')
       @$eml.find(".body .part-right textarea").val(print_data)
-
+      console.log(print_data)
       $.ajax
         url: "/json_datas",
         method: "post",
@@ -177,8 +177,11 @@ class Xml2json
           @coupe_arys.push([child_obj["-text"],ary[i+1]["-text"]])
           @make_coupe_arrays(child_obj)
 
-
-
+  # transform_html_code:(text)->
+  #   html_entity_code = [['&quot;','"']]
+  #   for code in html_entity_code
+  #     regex = "/"+code[0]+"/"
+  #     text.replace(regex, code[1])
 
 
 jQuery(document).on "ready page:load", ->
