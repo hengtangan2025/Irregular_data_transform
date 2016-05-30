@@ -1,0 +1,26 @@
+.page-query-mind-photograph
+  %h3 使用说明：输入搜索关键词后，点击“查询思路”按钮获取思路
+  .query-json-area
+    .query-area
+      =text_area_tag 'transferd_string', nil, rows: 1, cols: 45, placeholder: "输入关键字" ,class: 'query_blank'
+      %button.query-json-btn{:title =>"查询—查询-查询-查询"} 查询思路
+    %hr
+  .body
+    .part-left
+      .json-data-input
+        %span 当前关注点：
+        %input{type:"text",name:"json_data[input]"} 
+      .json-data-output
+        %span 后续关注点：
+        %input{type:"text",name:"json_data[output]"}
+      .json-data-desc-content
+        %span 思路概要：
+        %textarea{name:"json_data[desc_content]",rows:"5",cols:"25"}
+      %button{:class=>"submit-json"} 提交
+    .part-center
+      / %hr{:align => 'center' ,:size => "300" ,:width => "1px"}
+    .part-right
+      %p{:id => "find_result"}
+      %p{:id => "debugInfo"}
+      %input{:type => 'hidden',:id => "hintPipes"}
+      %p{:id => "output"}

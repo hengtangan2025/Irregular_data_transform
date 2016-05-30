@@ -1,0 +1,219 @@
+---
+npcs:
+- id: "王万新"
+  name: "王万新"
+  avatar: http://i.teamkn.com/i/IyuvIgoJ.png?imageMogr2/thumbnail/100x
+  direction: left
+- id: "会飞的猪"
+  name: "会飞的猪"
+  avatar: http://img.teamkn.com/i/B5VSfH2U.png@100w_100h_1e_1c.png
+  direction: right
+scripts:
+- npc: "王万新"
+  sentences:
+  - text: |+
+      看不进去
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      现在
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      习惯都是养成的
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      真的
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      慢慢养成这个习惯 以后就好了
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      以后就很自然了
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      环境不一样了嘛
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      现在你先不要着急  不要想一口吃一个胖子
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      你现在先计划一天看十页书
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      到时候就渐渐地好了
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      十页书应该不难吧
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      现在一页都难
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      亲
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      哈哈
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      心定不下来
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      环境，心态都变了
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "王万新"
+  sentences:
+  - text: |+
+      那就像办法让自己静下来
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: |+
+      不要让外界影响到你
+
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- npc: "会飞的猪"
+  sentences:
+  - text: "调整自己的状态"
+    speed: 20
+    style:
+      display: block
+      padding-top: 8%
+    delay: 400
+  clear: false
+- ''
