@@ -168,6 +168,7 @@ class IrregularDataTransformsController < ApplicationController
       data_last['direction'] = "right"
       data_last['avatar'] = "http://img.teamkn.com/i/B5VSfH2U.png@100w_100h_1e_1c.png"
       data
+    end
 
     def get_next_port(inport_array,outport_array,next_inport,last_port,length)
       obj = {}
