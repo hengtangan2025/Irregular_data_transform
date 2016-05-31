@@ -91,7 +91,7 @@ class QueryMindPhotograph
     numOfHintPipes = hintPipeSetJson.length;
     @$eml.find("#find_result").text("找到"+numOfHintPipes+"条思路")
     output = 'digraph 关于“' + searchKeyword + '”的思维引导图 { \n' +
-      '  rankdir=LR\n' +
+      '  rankdir=TB\n' +
       '  graph [fontname="simhei" splines="polyline"]\n' +
       '  edge  [fontname="simhei" arrowsize="0.6"]\n' +
       '  node  [fontname="simhei" fontsize="9px" shape="note" height="0.1" style="filled" fillcolor="khaki1"] \n';
@@ -109,6 +109,7 @@ class QueryMindPhotograph
         '[label="..." labeltooltip="' + hintPipeSetJson[i]["purposeTags"] + '"]' +
         "\n";
     document.getElementById("hintPipes").innerHTML = output + '} ';
+    console.log(output)
     @updateGraph();
 
   bind_event: ->
@@ -124,7 +125,8 @@ class QueryMindPhotograph
     @$eml.on "click", ".query-A-to-B-with-length-btn",=>
       first_port = @$eml.find('.first_port').val()
       last_port = @$eml.find('.last_port').val()
-      query_json_value = first_port + "->" + last_port
+      query_json_value = first_port + '->' + last_port
+      console.log(query_json_value)
       length = @$eml.find('.length').val()
       $.ajax
         url: "/irregular_data_transforms/query_A_to_B_with_length",
@@ -136,7 +138,31 @@ class QueryMindPhotograph
        }
       .success (msg) =>
         console.log(msg.result)
-        @renderHintsNetGraph(msg.result,"a")
+        @renderHintsNetGraph(msg.result,first_port)
+
+    @$eml.on "click", ".query-all-port-before-A-btn",=>
+      key_port = @$eml.find('.key_port').val()
+      $.ajax
+        url: "/irregular_data_transforms/query_all_port_before_A",
+        method: "post",
+        data: {
+          query_A : key_port,
+       }
+      .success (msg) =>
+        console.log(msg.result)
+        @renderHintsNetGraph(msg.result,key_port)
+
+    @$eml.on "click", ".query-all-port-after-A-btn",=>
+      key_port = @$eml.find('.key_port').val()
+      $.ajax
+        url: "/irregular_data_transforms/query_all_port_after_A",
+        method: "post",
+        data: {
+          query_A : key_port,
+       }
+      .success (msg) =>
+        console.log(msg.result)
+        @renderHintsNetGraph(msg.result,key_port)
 
     @$eml.on "click", ".submit-json",=>
       inport_value = @$eml.find('.json-data-input input').val()

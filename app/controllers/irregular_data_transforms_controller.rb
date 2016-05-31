@@ -53,12 +53,39 @@ class IrregularDataTransformsController < ApplicationController
       hash[:infoUrl][:href] = a.info_url_href
       render_arrays.push(hash)
     end
+    p 1111111111111111
+    p render_arrays
     render :json =>{:result => render_arrays.to_json}
   end
 
   def query_A_to_B_with_length
     inport_array = []
     render_arrays = get_first_port(inport_array,params[:query_A],params[:query_B],params[:length])
+    render_arrays = render_arrays.uniq
+    p 1111111111111111
+    p render_arrays
+    render :json => {:result => render_arrays.to_json}
+  end
+
+  def query_all_port_before_A
+    p "~~~~~~~~~~~~~~~~~~~~~~~~"
+    p JsonData.where(:outport => "你认为什么具体物质是导体或非导体？为什么？").all.to_a
+    render_arrays = []
+    get_all_port_before_A(render_arrays,params[:query_A])
+    render_arrays = render_arrays.uniq
+    p 1111111111111111
+    p render_arrays
+    render :json => {:result => render_arrays.to_json}
+  end
+
+  def query_all_port_after_A
+    p "~~~~~~~~~~~~~~~~~~~~~~~~"
+    p JsonData.where(:inport => "结束3").all.to_a
+    render_arrays = []
+    get_all_port_after_A(render_arrays,params[:query_A])
+    render_arrays = render_arrays.uniq
+    p 1111111111111111
+    p render_arrays
     render :json => {:result => render_arrays.to_json}
   end
 
@@ -98,6 +125,44 @@ class IrregularDataTransformsController < ApplicationController
   end
 
   private
+    def get_all_port_before_A(render_arrays,key_port)
+      arrays = JsonData.where(:outport => key_port).all.to_a
+      arrays.each do |a|
+        hash = {}
+        hash[:inPort] = a.inport
+        hash[:outPort] = a.outport
+        hash[:desc] = {}
+        hash[:desc][:title] = a.desc_title
+        hash[:desc][:content] = a.desc_content
+        hash[:infoUrl] = {}
+        hash[:infoUrl][:title] = a.info_url_title
+        hash[:infoUrl][:href] = a.info_url_href
+        render_arrays.push(hash)
+        if JsonData.where(:outport => a.inport).all.to_a != nil
+          get_all_port_before_A(render_arrays,a.inport)
+        end
+      end
+    end
+
+    def get_all_port_after_A(render_arrays,key_port)
+      arrays = JsonData.where(:inport => key_port).all.to_a
+      arrays.each do |a|
+        hash = {}
+        hash[:inPort] = a.inport
+        hash[:outPort] = a.outport
+        hash[:desc] = {}
+        hash[:desc][:title] = a.desc_title
+        hash[:desc][:content] = a.desc_content
+        hash[:infoUrl] = {}
+        hash[:infoUrl][:title] = a.info_url_title
+        hash[:infoUrl][:href] = a.info_url_href
+        render_arrays.push(hash)
+        if JsonData.where(:inport => a.outport).all.to_a != nil
+          get_all_port_after_A(render_arrays,a.outport)
+        end
+      end
+    end
+
     def conver_qq(str, pre_path)
       date1 = /^[\d{2}:\d{2}:\d{2}]{8,}/
       date2 = /^[\d{4}\/\d{1,2}\/\d{1,2} \d{2}:\d{2}:\d{2}]{18,}/
@@ -141,7 +206,7 @@ class IrregularDataTransformsController < ApplicationController
 
     def get_next_port(inport_array,outport_array,next_inport,last_port,length)
       obj = {}
-      arrays = JsonData.where(:inport=>Regexp.new(next_inport)).all.to_a
+      arrays = JsonData.where(:inport => next_inport).all.to_a
       if arrays.length != 0
         arrays.each do |a|
           next_inport_2 = a.outport
@@ -155,7 +220,7 @@ class IrregularDataTransformsController < ApplicationController
           hash[:infoUrl] = {}
           hash[:infoUrl][:title] = a.info_url_title
           hash[:infoUrl][:href] = a.info_url_href
-          if arrays = JsonData.where(:inport=>Regexp.new(next_inport)).all.to_a != nil
+          if arrays = JsonData.where(:inport => next_inport).all.to_a != nil
             if obj[:next_inport_2].length + 1 == length.to_i
               if a.outport == last_port
                 obj[:next_inport_2].push(hash)
@@ -184,7 +249,7 @@ class IrregularDataTransformsController < ApplicationController
 
     def get_first_port(inport_array,first_port,last_port,length)
       obj = {}
-      arrays = JsonData.where(:inport=>Regexp.new(first_port)).all.to_a
+      arrays = JsonData.where(:inport => first_port).all.to_a
       if arrays.length != 0
         arrays.each do |a|
           next_inport = a.outport
@@ -198,7 +263,7 @@ class IrregularDataTransformsController < ApplicationController
           hash[:infoUrl] = {}
           hash[:infoUrl][:title] = a.info_url_title
           hash[:infoUrl][:href] = a.info_url_href
-          if arrays = JsonData.where(:inport=>Regexp.new(next_inport)).all.to_a != nil
+          if arrays = JsonData.where(:inport => next_inport).all.to_a != nil
             if obj[:next_port].length + 1 == length.to_i
               if a.outport == last_port
                 obj[:next_port].push(hash)

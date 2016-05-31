@@ -12,6 +12,11 @@
       长度
       =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入路径长度" ,class: 'length'
       %button.query-A-to-B-with-length-btn{:title =>"查询—查询-查询-查询"} 查询思路
+    .query_port_A
+      查询节点
+      =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入查询节点" ,class: 'key_port'  
+    %button.query-all-port-before-A-btn{:title =>"查询—查询-查询-查询"} 查询节点前的所有节点
+    %button.query-all-port-after-A-btn{:title =>"查询—查询-查询-查询"} 查询节点后的所有节点
     %hr
   .body
     .part-left
