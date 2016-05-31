@@ -53,8 +53,6 @@ class IrregularDataTransformsController < ApplicationController
       hash[:infoUrl][:href] = a.info_url_href
       render_arrays.push(hash)
     end
-    p 1111111111111111
-    p render_arrays
     render :json =>{:result => render_arrays.to_json}
   end
 
@@ -62,30 +60,20 @@ class IrregularDataTransformsController < ApplicationController
     inport_array = []
     render_arrays = get_first_port(inport_array,params[:query_A],params[:query_B],params[:length])
     render_arrays = render_arrays.uniq
-    p 1111111111111111
-    p render_arrays
     render :json => {:result => render_arrays.to_json}
   end
 
   def query_all_port_before_A
-    p "~~~~~~~~~~~~~~~~~~~~~~~~"
-    p JsonData.where(:outport => "你认为什么具体物质是导体或非导体？为什么？").all.to_a
     render_arrays = []
     get_all_port_before_A(render_arrays,params[:query_A])
     render_arrays = render_arrays.uniq
-    p 1111111111111111
-    p render_arrays
     render :json => {:result => render_arrays.to_json}
   end
 
   def query_all_port_after_A
-    p "~~~~~~~~~~~~~~~~~~~~~~~~"
-    p JsonData.where(:inport => "结束3").all.to_a
     render_arrays = []
     get_all_port_after_A(render_arrays,params[:query_A])
     render_arrays = render_arrays.uniq
-    p 1111111111111111
-    p render_arrays
     render :json => {:result => render_arrays.to_json}
   end
 
