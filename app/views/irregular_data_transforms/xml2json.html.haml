@@ -1,6 +1,6 @@
 .text-xml2json
   .body-top-line
-    %h2 xml代码转换为json数据并存入数据库
+    %h2 xml代码和json数据相互转换
     %hr
   .body
     .part-left
@@ -9,15 +9,10 @@
       %hr{align: "center", width: "1px",size:"310px"}
     .part-right
       %textarea{rows:"20", cols:"70"}
-  .body-footer-line
-    %hr
-  .middle-line
-    %hr
-
   .footer-button
-    %button.xml-to-json xml -> json
+    %button.xml-to-json xml -> json + json数据的储存
     %button.json-to-xml json -> xml
-    %button.xml-to-json-a-b xml -> json(a->b)
-
-  .footer-line
-    %hr
+    %button.xml-to-json-a-b  (另一种xml转json) questionnet_to_json + json数据的储存
+  %hr
+  %h4 组合业务：
+  

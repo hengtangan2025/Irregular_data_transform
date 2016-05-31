@@ -141,16 +141,22 @@ class Xml2json
       @coupe_arys.push([json_ary[json_ary.length-1]["-text"],"..."])
       print_data = []
       for a in @coupe_arys
-        console.log(a)
         print_data.push(
             '\n{\n' +
-            ' "inPort" : "' + a[0] + '",\n' + 
-            ' "outPort" : "' + a[1] + '",\n' +
-            ' "tags" : "' + '"#hint-pipe #to-refine"' + '",\n' +
-            '"desc" : {  "title" : "简要说明", "content" : "..." },\n'+
-            '"infoUrl" : {  "title" : "参考链接", "href" : "..." },\n'+
+            ' "inPort" : "' + @replace_chars(a[0]) + '",\n' + 
+            ' "outPort" : "' + @replace_chars(a[1]) + '",\n' +
+            ' "tags" : "' + '#hint-pipe #to-refine' + '",\n' +
+            ' "desc" : {  "title" : "简要说明", "content" : "..." },\n'+
+            ' "infoUrl" : {  "title" : "参考链接", "href" : "..." }\n'+
             '}\n')
       @$eml.find(".body .part-right textarea").val(print_data)
+      console.log(print_data)
+      $.ajax
+        url: "/json_datas",
+        method: "post",
+        data: {save_json: "["+print_data+"]" }
+      .success (msg) =>
+       alert msg
 
   
   make_coupe_arrays:(ary)=>
@@ -160,13 +166,22 @@ class Xml2json
 
     for i in [0...ary.length]
       if ary[i]['outline'] != undefined
-        child_ary = ary[i]['outline']
-        @coupe_arys.push([ary[i]["-text"],ary[i]['outline'][0]["-text"]])
-        @coupe_arys.push([ary[i]['outline'][child_ary.length-1]["-text"],ary[i+1]["-text"]])
-        @make_coupe_arrays(child_ary)
+        if ary[i]['outline'] instanceof Array
+          child_ary = ary[i]['outline'] 
+          @coupe_arys.push([ary[i]["-text"],ary[i]['outline'][0]["-text"]])
+          @coupe_arys.push([ary[i]['outline'][child_ary.length-1]["-text"],ary[i+1]["-text"]])
+          @make_coupe_arrays(child_ary)
+        else
+          child_obj = ary[i]['outline'] 
+          @coupe_arys.push([ary[i]["-text"],child_obj["-text"]])
+          @coupe_arys.push([child_obj["-text"],ary[i+1]["-text"]])
+          @make_coupe_arrays(child_obj)
 
-
-
+  # transform_html_code:(text)->
+  #   html_entity_code = [['&quot;','"']]
+  #   for code in html_entity_code
+  #     regex = "/"+code[0]+"/"
+  #     text.replace(regex, code[1])
 
 
 jQuery(document).on "ready page:load", ->

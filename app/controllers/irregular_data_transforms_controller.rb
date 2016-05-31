@@ -57,6 +57,12 @@ class IrregularDataTransformsController < ApplicationController
     # render :json =>{:result => render_arrays.to_json}
   end
 
+  def query_A_to_B_with_length
+    inport_array = []
+    render_arrays = get_first_port(inport_array,params[:query_A],params[:query_B],params[:length])
+    render :json => {:result => render_arrays.to_json}
+  end
+
   def graphviz_to_gml_progarm
     dot_file = File.new(File.join("./public","graphviz.dot"), "w+")
     dot_file.puts(params[:graphviz])
@@ -163,5 +169,88 @@ class IrregularDataTransformsController < ApplicationController
       data_last['direction'] = "right"
       data_last['avatar'] = "http://img.teamkn.com/i/B5VSfH2U.png@100w_100h_1e_1c.png"
       data
+    end
+
+    def get_next_port(inport_array,outport_array,next_inport,last_port,length)
+      obj = {}
+      arrays = JsonData.where(:inport=>Regexp.new(next_inport)).all.to_a
+      if arrays.length != 0
+        arrays.each do |a|
+          next_inport_2 = a.outport
+          obj[:next_inport_2] = outport_array
+          hash = {}
+          hash[:inPort] = a.inport
+          hash[:outPort] = a.outport
+          hash[:desc] = {}
+          hash[:desc][:title] = a.desc_title
+          hash[:desc][:content] = a.desc_content
+          hash[:infoUrl] = {}
+          hash[:infoUrl][:title] = a.info_url_title
+          hash[:infoUrl][:href] = a.info_url_href
+          if arrays = JsonData.where(:inport=>Regexp.new(next_inport)).all.to_a != nil
+            if obj[:next_inport_2].length + 1 == length.to_i
+              if a.outport == last_port
+                obj[:next_inport_2].push(hash)
+                array_length = obj[:next_inport_2].length - 1
+                (0..array_length).each do |i|
+                  inport_array.push(obj[:next_inport_2][i])
+                end
+              end
+            else
+              if obj[:next_inport_2].length + 1 < length.to_i
+                if a.outport != last_port
+                  next_array = []
+                  array_length = obj[:next_inport_2].length - 1
+                  (0..array_length).each do |i|
+                    next_array.push(obj[:next_inport_2][i])
+                  end 
+                  next_array.push(hash)
+                  get_next_port(inport_array,next_array,next_inport_2,last_port,length)
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+    def get_first_port(inport_array,first_port,last_port,length)
+      obj = {}
+      arrays = JsonData.where(:inport=>Regexp.new(first_port)).all.to_a
+      if arrays.length != 0
+        arrays.each do |a|
+          next_inport = a.outport
+          obj[:next_port] = []
+          hash = {}
+          hash[:inPort] = a.inport
+          hash[:outPort] = a.outport
+          hash[:desc] = {}
+          hash[:desc][:title] = a.desc_title
+          hash[:desc][:content] = a.desc_content
+          hash[:infoUrl] = {}
+          hash[:infoUrl][:title] = a.info_url_title
+          hash[:infoUrl][:href] = a.info_url_href
+          if arrays = JsonData.where(:inport=>Regexp.new(next_inport)).all.to_a != nil
+            if obj[:next_port].length + 1 == length.to_i
+              if a.outport == last_port
+                obj[:next_port].push(hash)
+                array_length = obj[:next_port].length - 1
+                (0..array_length).each do |i|
+                  p obj[:next_port][i]
+                  inport_array.push(obj[:next_port][i])
+                end
+              end
+            else
+              if obj[:next_port].length + 1 < length.to_i
+                if a.outport != last_port
+                  obj[:next_port].push(hash)
+                  get_next_port(inport_array,obj[:next_port],next_inport,last_port,length)
+                end
+              end
+            end
+          end
+        end
+        return inport_array
+      end
     end
 end

@@ -17,4 +17,5 @@ class JsonData
       JsonData.where(inport:self.inport,outport:self.outport).delete
     end
   end
+
 end
