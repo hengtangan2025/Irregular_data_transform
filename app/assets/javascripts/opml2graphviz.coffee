@@ -1,8 +1,40 @@
-class QueryMindPhotograph
+class Opml2graphviz
   constructor: (@$eml) ->
     @gvParser = new DOMParser();
     @gvResult;
     @bind_event()
+    @coupe_arys = []
+
+  replace_chars: (text)->
+    text1 = @replaceSpecialChar(text, '\\\\(?!n)(?!t)', '\\/')
+    text2 = @replaceSpecialChar(text1, '\t', '  ')
+    text3 = @replaceSpecialChar(text2, '\n', '\\n')
+    text4 = @replaceSpecialChar(text3, '"', '\\"')
+    text5 = @replaceSpecialChar(text4, '\'', '\\"')
+    text6 = @replaceSpecialChar(text5, ':', '：')
+    return text6
+
+  replaceSpecialChar: (text, specialChar, safeChar)->
+    patternInRegexp = new RegExp(specialChar, 'g')
+    return text.replace(patternInRegexp, safeChar)
+
+  make_coupe_arrays:(ary)=>
+    if ary.length>1
+      for i in [0...ary.length-1]
+        @coupe_arys.push([ary[i]["-text"],ary[i+1]["-text"]])
+
+    for i in [0...ary.length]
+      if ary[i]['outline'] != undefined
+        if ary[i]['outline'] instanceof Array
+          child_ary = ary[i]['outline'] 
+          @coupe_arys.push([ary[i]["-text"],ary[i]['outline'][0]["-text"]])
+          @coupe_arys.push([ary[i]['outline'][child_ary.length-1]["-text"],ary[i+1]["-text"]])
+          @make_coupe_arrays(child_ary)
+        else
+          child_obj = ary[i]['outline'] 
+          @coupe_arys.push([ary[i]["-text"],child_obj["-text"]])
+          @coupe_arys.push([child_obj["-text"],ary[i+1]["-text"]])
+          @make_coupe_arrays(child_obj)
 
   updateGraph: =>
     if @worker
@@ -112,75 +144,56 @@ class QueryMindPhotograph
     console.log(output)
     @updateGraph();
 
+  getAllThePortFromA2B: (A,B)=>
+      $.ajax
+        url: "/irregular_data_transforms/query_A_to_B",
+        method: "post",
+        data: {
+          query_A : A,
+          query_B : B
+       }
+      .success (msg) =>
+        console.log(msg.result)
+        @renderHintsNetGraph(msg.result,A)
+
   bind_event: ->
-    @$eml.on "click", ".query-json-btn",=>
-      query_json_value = @$eml.find('.query_blank').val()
+    @$eml.on "click", ".body .part-left .opml2graphviz",=>
+      text_value = @$eml.find('.body .part-left textarea').val()
+      xotree = new XML.ObjTree
+      tree = xotree.parseXML(text_value)
+      json_ary = tree["opml"]["body"]["outline"]["outline"]
+      first_port = json_ary[0]["-text"]
+      last_port = json_ary[json_ary.length-1]["-text"]
+      console.log(first_port)
+      console.log(last_port)
+      # a = "test"
+      # b = "结束0"
+      @coupe_arys = []
+      @make_coupe_arrays(json_ary)
+      # @coupe_arys.push([a,json_ary[0]["-text"]])
+      # @coupe_arys.push([json_ary[json_ary.length-1]["-text"],b])
+      print_data = []
+      for a in @coupe_arys
+        print_data.push(
+            '\n{\n' +
+            ' "inPort" : "' + @replace_chars(a[0]) + '",\n' + 
+            ' "outPort" : "' + @replace_chars(a[1]) + '",\n' +
+            ' "tags" : "' + '#hint-pipe #to-refine' + '",\n' +
+            ' "desc" : {  "title" : "简要说明", "content" : "..." },\n'+
+            ' "infoUrl" : {  "title" : "参考链接", "href" : "..." }\n'+
+            '}\n')
+
+      console.log(print_data)
       $.ajax
-        url: "/irregular_data_transforms/query_json",
+        url: "/json_datas",
         method: "post",
-        data: {query_json: query_json_value }
+        data: {save_json: "["+print_data+"]" }
       .success (msg) =>
+       alert msg
+       @getAllThePortFromA2B(first_port,last_port)
 
-        @renderHintsNetGraph(msg.result,query_json_value)
-
-    @$eml.on "click", ".query-A-to-B-with-length-btn",=>
-      first_port = @$eml.find('.first_port').val()
-      last_port = @$eml.find('.last_port').val()
-      query_json_value = first_port + '->' + last_port
-      console.log(query_json_value)
-      length = @$eml.find('.length').val()
-      $.ajax
-        url: "/irregular_data_transforms/query_A_to_B_with_length",
-        method: "post",
-        data: {
-          query_A : first_port,
-          query_B : last_port,
-          length : length
-       }
-      .success (msg) =>
-        console.log(msg.result)
-        @renderHintsNetGraph(msg.result,first_port)
-
-    @$eml.on "click", ".query-all-port-before-A-btn",=>
-      key_port = @$eml.find('.key_port').val()
-      $.ajax
-        url: "/irregular_data_transforms/query_all_port_before_A",
-        method: "post",
-        data: {
-          query_A : key_port,
-       }
-      .success (msg) =>
-        console.log(msg.result)
-        @renderHintsNetGraph(msg.result,key_port)
-
-    @$eml.on "click", ".query-all-port-after-A-btn",=>
-      key_port = @$eml.find('.key_port').val()
-      $.ajax
-        url: "/irregular_data_transforms/query_all_port_after_A",
-        method: "post",
-        data: {
-          query_A : key_port,
-       }
-      .success (msg) =>
-        console.log(msg.result)
-        @renderHintsNetGraph(msg.result,key_port)
-
-    @$eml.on "click", ".submit-json",=>
-      inport_value = @$eml.find('.json-data-input input').val()
-      output_value = @$eml.find('.json-data-output input').val()
-      desc_content_value = @$eml.find('.json-data-desc-content textarea').val()
-      if inport_value is "" || output_value is ""
-        alert "当前关注点和后续关注点不为空"
-      else
-        json = {json_data:{inport:inport_value,outport:output_value,desc_content:desc_content_value}};
-        $.ajax
-          url: "/json_datas/enter_data",
-          method: "post",
-          data: json
-        .success (msg) =>
-          alert(msg)
-
-
+  
+  
 jQuery(document).on "ready page:load", ->
-  if jQuery(".page-query-mind-photograph").length > 0
-    new QueryMindPhotograph jQuery(".page-query-mind-photograph")
+  if jQuery(".page-opml2graphviz").length > 0
+    new Opml2graphviz jQuery(".page-opml2graphviz")

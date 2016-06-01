@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yEd 3.15.0.2-->
+  <key attr.name="Description" attr.type="string" for="graph" id="d0">
+    <default/>
+  </key>
+  <key for="port" id="d1" yfiles.type="portgraphics"/>
+  <key for="port" id="d2" yfiles.type="portgeometry"/>
+  <key for="port" id="d3" yfiles.type="portuserdata"/>
+  <key attr.name="url" attr.type="string" for="node" id="d4"/>
+  <key attr.name="description" attr.type="string" for="node" id="d5"/>
+  <key for="node" id="d6" yfiles.type="nodegraphics"/>
+  <key for="graphml" id="d7" yfiles.type="resources"/>
+  <key attr.name="url" attr.type="string" for="edge" id="d8"/>
+  <key attr.name="description" attr.type="string" for="edge" id="d9"/>
+  <key for="edge" id="d10" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <node id="n0">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="241.874755859375" x="215.42651095920138" y="178.93155750093007"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="231.874755859375" x="5.0" y="1.0">怎样才能让知识协作不过度依赖同步沟通？<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="185.90112304687503" x="20.000232127356142" y="940.3937026735337"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="183.901123046875" x="1.0" y="1.0">实现小团队线上异步知识协作机制<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="-5.551115123125783E-17" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="113.940673828125" x="279.3935519748264" y="127.95179065522694"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="111.940673828125" x="1.0" y="1.0">如何定义知识协作？<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="185.901123046875" x="243.41332736545138" y="0.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="183.901123046875" x="1.0" y="1.0">或许需要一种新型知识协作机制？<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n4">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="197.89453125" x="481.3047185019841" y="127.95179065522694"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="195.89453125" x="1.0" y="1.0">关于起点还能想到哪些相关的思路？<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n5">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="197.89453125" x="309.3705915178571" y="811.1910191611639"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="195.89453125" x="1.0" y="1.0">关于终点还能想到哪些相关的思路？<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="197.89453125" x="81.47575024801588" y="811.1910191611639"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="195.89453125" x="1.0" y="1.0">实现基于知识网的在线异步沟通软件<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n7">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="133.93408203125" x="269.3968478732639" y="615.7630380297464"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="123.93408203125" x="5.0" y="1.0">实现针对引思网的点赞<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n8">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="145.927490234375" x="263.4001437717014" y="331.87085803803944"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="135.927490234375" x="5.0" y="1.0">实现引思管道的在线存储<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n9">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="257.861572265625" x="207.43310275607638" y="229.9113243466332"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="255.861572265625" x="1.0" y="1.0">如何为不同人的“思路”设计规范的数据结构？<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n10">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="169.914306640625" x="251.40673556857638" y="382.85062488374257"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="159.914306640625" x="5.0" y="1.0">实现引思管道的在线增删改查<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n11">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="157.9208984375" x="433.33121744791663" y="615.7630380297464"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="147.9208984375" x="5.0" y="1.0">实现引思网更新的通知提醒<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n12">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="169.914306640625" x="251.40673556857638" y="280.8910911923363"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="159.914306640625" x="5.0" y="1.0">定义一种数据结构：引思管道<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n13">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="145.927490234375" x="87.4723659939236" y="564.7832711840433"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="135.927490234375" x="5.0" y="1.0">实现引思网的可视化展现<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n14">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="205.89453125" x="233.41662326388888" y="433.8303917294457"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="195.89453125" x="5.0" y="1.0">引思网就是以引思管道为元素的数组<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n15">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="157.9208984375" x="81.4756618923611" y="615.7630380297464"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="147.9208984375" x="5.0" y="1.0">实现引思网的可视化增删改<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n16">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="169.914306640625" x="495.2948308066716" y="229.9113243466332"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="159.914306640625" x="5.0" y="1.0">需要实现即时的多人协同编辑<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n17">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="169.914306640625" x="495.2948308066716" y="280.8910911923363"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="159.914306640625" x="5.0" y="1.0">即时看到演示者展示思维过程<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n18">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="157.9208984375" x="501.2915349082341" y="178.93155750093007"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="147.9208984375" x="5.0" y="1.0">紧急的事情需要同步沟通啊<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n19">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="20.979766845703125" width="145.927490234375" x="621.2521278986856" y="615.7630380297464"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="custom" textColor="#000000" visible="true" width="135.927490234375" x="5.0" y="1.0">实现引思网的关键词查询<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <edge id="e0" source="n0" target="n9">
+      <data key="d8"/>
+      <data key="d9"><![CDATA[知识协作容易走入一个低效的循环，就是每当遇到无法独立克服的困难时，要么盲目地等待别人，要么无脑地邀请所有团队成员一起开会，共同关注这个困难。凡是出现这种情况，都可以说是“过度依赖同步沟通”。
+
+同步沟通的副作用很多：
+
+1 不需要关心某困难的人也被牵扯进来，浪费了时间和注意力；
+2 需要关心某困难的人可能手头上还有其它紧急的事，被开会打断后得不偿失；
+3 有时候仅仅是把具体的困难上下文描述清楚，就需要花不少时间，因为这些困难上下文通常分散在每个人的短期记忆中
+
+要克服沟通的副作用，有两个主要思路：
+
+1 不紧急的情况下，设法用异步沟通代替同步沟通
+2 设法绘制一个工作进展总体概览图，类似于军事行动中用来观察地形讨论战略战术的沙盘]]></data>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="side_slider" preferredPlacement="right" ratio="0.0" textColor="#000000" visible="true" width="123.93408203125" x="-125.93408474392362" y="5.510109747023819">点击连接线查看说明…<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e1" source="n2" target="n0">
+      <data key="d8"/>
+      <data key="d9"><![CDATA[知识协作是指两个以上的人基于各自的知识、经验和技能，围绕一个谁都难以单独解决的问题各自提出自己的解决思路，展示自己的解决方法，同时理解与整合其它人的思路与方法，并通过反复的沟通实现思路与方法的融会贯通，实现问题的最终解决。]]></data>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="side_slider" preferredPlacement="right" ratio="0.0" textColor="#000000" visible="true" width="123.93408203125" x="-125.93408474392362" y="5.510109747023819">点击连接线查看说明…<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e2" source="n3" target="n2">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-6.00000271267362" y="51.48601190476191">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="n3" target="n4">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562">
+            <y:Point x="336.3638888888889" y="51.979766845703125"/>
+            <y:Point x="580.2519841269841" y="112.95179065522693"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.5286590336719491" textColor="#000000" visible="true" width="4.0" x="119.94404490637396" y="63.98601190476191">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="n3" target="n1">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="-46.47528076171875" ty="-10.489883422851562">
+            <y:Point x="336.3638888888889" y="51.979766845703125"/>
+            <y:Point x="66.47539682539683" y="127.95179065522693"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.95953369140625" modelName="side_slider" preferredPlacement="right" ratio="0.4913735595141004" textColor="#000000" underlinedText="true" visible="true" width="315.82861328125" x="-587.7170750276579" y="338.179237307594">从起点到终点的总体探索方向<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="n4" target="n18">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-6.000030033172152" y="12.999993169875381">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e6" source="n5" target="n1">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="46.47528076171878" ty="-10.489883422851562">
+            <y:Point x="408.3178571428571" y="847.170786006867"/>
+            <y:Point x="159.42619047619047" y="909.3937026735337"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.5169804950335115" textColor="#000000" visible="true" width="4.0" x="-138.59043061755955" y="42.64761380634616">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e7" source="n6" target="n1">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="46.47528076171878" ty="-10.489883422851562">
+            <y:Point x="180.42301587301588" y="847.170786006867"/>
+            <y:Point x="159.42619047619047" y="909.3937026735337"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e8" source="n7" target="n6">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562">
+            <y:Point x="336.3638888888889" y="651.7428048754496"/>
+            <y:Point x="180.42301587301588" y="780.1910191611639"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.5091458712375386" textColor="#000000" visible="true" width="4.0" x="-87.46748287140377" y="77.75201905235554">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="n8" target="n10">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-6.00000271267362" y="13.000008428664444">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e10" source="n9" target="n12">
+      <data key="d8"><![CDATA[https://workflowy.com/s/rO0gEdEw5F]]></data>
+      <data key="d9"><![CDATA[实现 JSON 格式引思管道（hint-pipe）数据的在线存储
+var hintPipe1 = {
+  "inPort": "前置启发点",
+  "outPort": "后继启发点",
+  "desc": {
+    "title": "描述标题", 
+    "content": "描述文字" 
+  },
+  "infoUrl": {
+    "title": "链接标题", 
+    "href": "实际 URL" 
+  }
+}]]></data>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="side_slider" preferredPlacement="right" ratio="0.0" textColor="#000000" visible="true" width="123.93408203125" x="-125.93408474392362" y="5.510109747023819">点击连接线查看说明…<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e11" source="n10" target="n14">
+      <data key="d8"/>
+      <data key="d9"><![CDATA[引思网数据结构是以引思管道数据为元素的数组。
+
+var hintsnet1 = [hintPipe1, hintPipe2, ... , hintPipe100]; ]]></data>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="side_slider" preferredPlacement="right" ratio="0.0" textColor="#000000" visible="true" width="123.93408203125" x="-125.93408474392362" y="5.510125005812881">点击连接线查看说明…<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e12" source="n11" target="n6">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562">
+            <y:Point x="512.2916666666666" y="651.7428048754496"/>
+            <y:Point x="180.42301587301588" y="780.1910191611639"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e13" source="n12" target="n8">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-6.00000271267362" y="13.000008428664444">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e14" source="n13" target="n15">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e15" source="n14" target="n7">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e16" source="n14" target="n11">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562">
+            <y:Point x="336.3638888888889" y="485.8101585751488"/>
+            <y:Point x="512.2916666666666" y="575.2731546068949"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.48106628708359545" textColor="#000000" visible="true" width="4.0" x="85.96388617621528" y="78.74854874634786">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e17" source="n14" target="n13">
+      <data key="d8"/>
+      <data key="d9"><![CDATA[目前已经考虑的有两种展现方式
+
+1 直接转换为 Graphviz 代码，生成 SVG 图，适合手工操作或展示简单的可视化效果（已经实现）
+2 利用 d3js 进行加工，生成数据驱动的可交互文档，学习曲线较陡峭，但投入产出比高，可定制更强。（还在学习过程中）]]></data>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562">
+            <y:Point x="336.3638888888889" y="485.8101585751488"/>
+            <y:Point x="160.4361111111111" y="549.7832711840433"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.979766845703125" modelName="side_slider" preferredPlacement="right" ratio="0.5372182804093864" textColor="#000000" visible="true" width="111.940673828125" x="-228.00199970898072" y="53.4966813102601">点击连接线看说明…<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e18" source="n14" target="n19">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562">
+            <y:Point x="336.3638888888889" y="485.8101585751488"/>
+            <y:Point x="694.2158730158731" y="575.2731546068949"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.48875886633594934" textColor="#000000" visible="true" width="4.0" x="176.92598935081844" y="78.23150644453744">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e19" source="n15" target="n6">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562">
+            <y:Point x="160.4361111111111" y="651.7428048754496"/>
+            <y:Point x="180.42301587301588" y="780.6910191611639"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e20" source="n16" target="n17">
+      <data key="d8"/>
+      <data key="d9"><![CDATA[【李博超】需要增加 场景 :”多人协同编辑“（就是参与者可以一起编辑一张图） 功能： 某个参与者可以点击一一段节点a->b（已经被授权编辑的节点） 特性：在线的所有这个小组的人可以即时看到编辑者的编辑行为。 这个功能很适合面对一群人在开会，参与者或演示者展示思维过程。]]></data>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="-6.000030033172152" y="12.999993169875381">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e21" source="n18" target="n16">
+      <data key="d9"><![CDATA[事情要分紧急性，十万火急的事情，多人同步沟通，一起参与编辑知识图十分有必要，有点急的，我觉得在参与者遇到困惑的时候要有“遇到困难”或者“不明需求”这种tag 后台检测到这种tag后立刻通过手机或者邮件通知到发起这个知识节点的人上。]]></data>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e22" source="n19" target="n6">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="10.489883422851562" tx="0.0" ty="-10.489883422851562">
+            <y:Point x="694.2158730158731" y="651.7428048754496"/>
+            <y:Point x="180.42301587301588" y="780.1910191611639"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="short"/>
+          <y:EdgeLabel alignment="left" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Inziu IosevkaCC Slab SC" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="side_slider" preferredPlacement="right" ratio="0.48564650530643766" textColor="#000000" visible="true" width="4.0" x="-258.8964369032118" y="72.72411416674424">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="anywhere" side="right" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+  <data key="d7">
+    <y:Resources/>
+  </data>
+</graphml>

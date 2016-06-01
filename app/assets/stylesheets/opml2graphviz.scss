@@ -1,0 +1,37 @@
+.page-opml2graphviz{
+  .body{
+    // position: relative;
+    margin: 20px;
+    .part-left{
+      float: left;
+      display: inline;
+      width: 45%;
+      height: 300px;
+      margin: 10px;
+      // position: absolute;
+      // top: 0px;
+      // left: 0px;
+    }
+    .part-right{
+      float: right;
+      display: inline;
+      width: 45%;
+      height: 300px;
+      margin: 10px;
+      // position:absolute;
+      // top: 0px;
+      // right: 0px;
+      #output {
+        overflow: auto;
+      }
+    }
+    .part-center{
+      display: inline;
+      float:left;
+      height: 400px;
+      width: 1px;
+      margin: 10px;
+      background-color: black;
+    }
+  }
+}

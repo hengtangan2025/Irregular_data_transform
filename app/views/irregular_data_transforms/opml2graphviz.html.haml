@@ -1,0 +1,15 @@
+.page-opml2graphviz
+  %h3 使用说明：粘贴 workflowy 导出结果后，点击“生成思路脉络图”按钮
+  %hr
+  .body
+    .part-left
+      %textarea{rows:"20", cols:"70"}
+      %button.opml2graphviz 生成思路脉络图
+    .part-center
+      %hr{:align => 'center' ,:size => "300" ,:width => "1px"}
+    .part-right
+      %p{:id => "find_result"}
+      %p{:id => "debugInfo"}
+      %input{:type => 'hidden',:id => "hintPipes"}
+      %p{:id => "output"}
+    

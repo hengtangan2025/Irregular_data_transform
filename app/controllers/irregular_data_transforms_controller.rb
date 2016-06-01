@@ -63,6 +63,13 @@ class IrregularDataTransformsController < ApplicationController
     render :json => {:result => render_arrays.to_json}
   end
 
+  def query_A_to_B
+    render_arrays = []
+    get_all_port_from_A_to_B(render_arrays,params[:query_A],params[:query_B])
+    render_arrays = render_arrays.uniq
+    render :json => {:result => render_arrays.to_json}
+  end
+
   def query_all_port_before_A
     render_arrays = []
     get_all_port_before_A(render_arrays,params[:query_A])
@@ -90,8 +97,15 @@ class IrregularDataTransformsController < ApplicationController
   def convert
     pre_path = Rails.root.to_s + "/public/pre.yml"
     chat_text = params[:chat_text].strip
-    @data = conver_qq(chat_text, pre_path)
-    render :text => @data.to_yaml
+    case params[:chat_type]
+    when "QQ"
+      @data = conver_qq(chat_text, pre_path)
+      render :text => @data.to_yaml
+    else
+      @data = convert_webchat(chat_text, pre_path)
+      render :text => @data.to_yaml
+    end
+
   end
 
   # 将文件保存到本地
@@ -101,7 +115,6 @@ class IrregularDataTransformsController < ApplicationController
     text_convert = File.new(file_path, 'wb+')
     text_convert.write(fetch_text)
     text_convert.close
-    render :text_convert => text_convert
   end
 
   def down_load
@@ -109,6 +122,10 @@ class IrregularDataTransformsController < ApplicationController
   end
 
   def xml2json
+    
+  end
+
+  def opml2graphviz
     
   end
 
@@ -134,6 +151,7 @@ class IrregularDataTransformsController < ApplicationController
 
     def get_all_port_after_A(render_arrays,key_port)
       arrays = JsonData.where(:inport => key_port).all.to_a
+      p arrays
       arrays.each do |a|
         hash = {}
         hash[:inPort] = a.inport
@@ -147,6 +165,29 @@ class IrregularDataTransformsController < ApplicationController
         render_arrays.push(hash)
         if JsonData.where(:inport => a.outport).all.to_a != nil
           get_all_port_after_A(render_arrays,a.outport)
+        end
+      end
+    end
+
+    def get_all_port_from_A_to_B(render_arrays,first_port,last_port)
+      arrays = JsonData.where(:inport => first_port).all.to_a
+      arrays.each do |a|
+        hash = {}
+        hash[:inPort] = a.inport
+        hash[:outPort] = a.outport
+        hash[:desc] = {}
+        hash[:desc][:title] = a.desc_title
+        hash[:desc][:content] = a.desc_content
+        hash[:infoUrl] = {}
+        hash[:infoUrl][:title] = a.info_url_title
+        hash[:infoUrl][:href] = a.info_url_href
+        render_arrays.push(hash)
+        if a.outport == last_port
+          return render_arrays
+        else
+          if JsonData.where(:inport => a.outport).all.to_a != nil
+            get_all_port_from_A_to_B(render_arrays,a.outport,last_port)
+          end
         end
       end
     end
@@ -182,6 +223,31 @@ class IrregularDataTransformsController < ApplicationController
         yml_file['scripts'][0]['sentences'][0]['text'] = value
 
         
+        data['scripts'] << yml_file['scripts'][0]
+        data['npcs'] << yml_file['npcs'][0]
+      end
+      data['npcs'] = data['npcs'].uniq
+      data_last = data['npcs'].last
+      data_last['direction'] = "right"
+      data_last['avatar'] = "http://img.teamkn.com/i/B5VSfH2U.png@100w_100h_1e_1c.png"
+      data
+    end
+
+    def convert_webchat(str, pre_path)
+      str = str.gsub(/\d{2}\:\d{2}/, '').gsub(/\*/, '').gsub(/\n/,'').gsub(/@/, '').gsub(/:/, '').gsub(/\r/, '')
+      items = str.scan(/\[(.*?)\]([^\[]*)/)
+      data = {}
+      data['npcs'] = []
+      data['scripts'] = []
+      items.each_with_index do |item, index|
+        yml_file = YAML::load_file(pre_path)
+
+        yml_file['npcs'][0]['id'] = item[0]
+        yml_file['npcs'][0]['name'] = item[0]
+
+        item[1] = item[1].gsub(/^#{item[0]}/, '')
+        yml_file['scripts'][0]['npc'] = item[0]
+        yml_file['scripts'][0]['sentences'][0]['text'] = item[1]
         data['scripts'] << yml_file['scripts'][0]
         data['npcs'] << yml_file['npcs'][0]
       end

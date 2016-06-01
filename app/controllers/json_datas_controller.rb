@@ -32,7 +32,8 @@ class JsonDatasController < ApplicationController
         :desc_title=>json_data["desc"]["title"],
         :desc_content=>json_data["desc"]["content"],
         :info_url_title=>json_data["infoUrl"]["title"],
-        :info_url_href=>json_data["infoUrl"]["href"])
+        :info_url_href=>json_data["infoUrl"]["href"],
+        :tags=>json_data["tags"])
       if data.save
         ary[index]=data.id
       end

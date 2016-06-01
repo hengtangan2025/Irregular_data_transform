@@ -1,6 +1,7 @@
 class Xml2json
   constructor: (@$eml) ->
     @bind_event()
+    @coupe_arys = []
 
   replace_chars: (text)->
     text1 = @replaceSpecialChar(text, '\\\\(?!n)(?!t)', '\\/')
@@ -29,7 +30,6 @@ class Xml2json
         regExp = "([^\\|]+)" + "([^\\n]+(?=\\|))" + "\\|" + "([^#\\n]+) " + "([^\\n]+(?!#)|(?!@))"
         regExpForhintPipe = new RegExp(regExp, "g")
         regExpMatchResult = regExpForhintPipe.exec(text)
-
         if json["outline"]
           str_array.push(
             '\n{\n' +
@@ -83,33 +83,105 @@ class Xml2json
       text_value = jQuery(".body .part-left textarea").val()
       xotree = new XML.ObjTree
       json = eval("("+text_value+")")
-
-      data = '{'+'\n'+
-        '"opml": {' +'\n'+
-          '"-version": "2.0",' +'\n'+
-          '"head": { "ownerEmail": "anonymous@hintsnet.com" },'+ '\n' +
-          '"body": {'+'\n'+
-            '"outline": {'+'\n'+
-             '"-text": "workflowy格式数据样板",'+'\n'+
+      if json.length > 0
+        data = '{'+'\n'+
+          '"opml": {' +'\n'+
+            '"-version": "2.0",' +'\n'+
+            '"head": { "ownerEmail": "anonymous@hintsnet.com" },'+ '\n' +
+            '"body": {'+'\n'+
               '"outline": {'+'\n'+
-                '"-text": "'+json["inPort"]+'|-&gt;|'+json["outPort"]+'",'+'\n'+
+                '"-text": "workflowy格式数据样板",'+'\n'+
                 '"outline": ['+'\n'+
-                  '{'+'\n'+
-                    '"-text": "'+json["desc"]["title"]+'",'+'\n'+
-                    '"-_note": "'+json["desc"]["content"]+'"'+'\n'+
-                  '},'+'\n'+
-                  '{'+'\n'+
-                    '"-text": "'+json["infoUrl"]["title"]+'",'+'\n'+
-                    '"-_note": "'+json["infoUrl"]["href"]+'"'+'\n'+
-                  '}'+'\n'+
+                jQuery.map(json, (ary) -> 
+                  return '{'+'\n'+'"-text": "'+ary["inPort"]+'|-&gt;|'+ary["outPort"]+'#hint-pipe #to-refine",'+'\n'+'"outline": ['+'\n'+'{'+'\n'+'"-text": "'+ary["desc"]["title"]+'",'+'\n'+'"-_note": "'+ary["desc"]["content"]+'"'+'\n'+'},'+'\n'+'{'+'\n'+'"-text": "'+ary["infoUrl"]["title"]+'",'+'\n'+'"-_note": "'+ary["infoUrl"]["href"]+'"'+'\n'+'}'+'\n'+']'+'\n'+'}'
+                )+'\n'+
                 ']'+'\n'+
               '}'+'\n'+
             '}'+'\n'+
           '}'+'\n'+
-        '}'+'\n'+
-      '}'
-      json_data = eval("("+data+")")
-      jQuery(".body .part-right textarea").val(formatXml(xotree.writeXML(json_data)))
+        '}'
+      else
+        data = '{'+'\n'+
+          '"opml": {' +'\n'+
+            '"-version": "2.0",' +'\n'+
+            '"head": { "ownerEmail": "anonymous@hintsnet.com" },'+ '\n' +
+            '"body": {'+'\n'+
+              '"outline": {'+'\n'+
+               '"-text": "workflowy格式数据样板",'+'\n'+
+                '"outline": {'+'\n'+
+                  '"-text": "'+json["inPort"]+'|-&gt;|'+json["outPort"]+'",'+'\n'+
+                  '"outline": ['+'\n'+
+                    '{'+'\n'+
+                      '"-text": "'+json["desc"]["title"]+'",'+'\n'+
+                      '"-_note": "'+json["desc"]["content"]+'"'+'\n'+
+                    '},'+'\n'+
+                    '{'+'\n'+
+                      '"-text": "'+json["infoUrl"]["title"]+'",'+'\n'+
+                      '"-_note": "'+json["infoUrl"]["href"]+'"'+'\n'+
+                    '}'+'\n'+
+                  ']'+'\n'+
+                '}'+'\n'+
+              '}'+'\n'+
+            '}'+'\n'+
+          '}'+'\n'+
+        '}'
+
+      json_datas = eval("("+data+")")
+      jQuery(".body .part-right textarea").val(formatXml(xotree.writeXML(json_datas)))
+
+
+    @$eml.on "click", ".footer-button .xml-to-json-a-b",=>
+      text_value = jQuery(".body .part-left textarea").val()
+      xotree = new XML.ObjTree
+      tree = xotree.parseXML(text_value)
+      json_ary = tree["opml"]["body"]["outline"]["outline"]
+      @coupe_arys = []
+      @make_coupe_arrays(json_ary)
+      @coupe_arys.push(["...",json_ary[0]["-text"]])
+      @coupe_arys.push([json_ary[json_ary.length-1]["-text"],"..."])
+      print_data = []
+      for a in @coupe_arys
+        print_data.push(
+            '\n{\n' +
+            ' "inPort" : "' + @replace_chars(a[0]) + '",\n' + 
+            ' "outPort" : "' + @replace_chars(a[1]) + '",\n' +
+            ' "tags" : "' + '#hint-pipe #to-refine' + '",\n' +
+            ' "desc" : {  "title" : "简要说明", "content" : "..." },\n'+
+            ' "infoUrl" : {  "title" : "参考链接", "href" : "..." }\n'+
+            '}\n')
+      @$eml.find(".body .part-right textarea").val(print_data)
+      console.log(print_data)
+      $.ajax
+        url: "/json_datas",
+        method: "post",
+        data: {save_json: "["+print_data+"]" }
+      .success (msg) =>
+       alert msg
+
+  
+  make_coupe_arrays:(ary)=>
+    if ary.length>1
+       for i in [0...ary.length-1]
+        @coupe_arys.push([ary[i]["-text"],ary[i+1]["-text"]])
+
+    for i in [0...ary.length]
+      if ary[i]['outline'] != undefined
+        if ary[i]['outline'] instanceof Array
+          child_ary = ary[i]['outline'] 
+          @coupe_arys.push([ary[i]["-text"],ary[i]['outline'][0]["-text"]])
+          @coupe_arys.push([ary[i]['outline'][child_ary.length-1]["-text"],ary[i+1]["-text"]])
+          @make_coupe_arrays(child_ary)
+        else
+          child_obj = ary[i]['outline'] 
+          @coupe_arys.push([ary[i]["-text"],child_obj["-text"]])
+          @coupe_arys.push([child_obj["-text"],ary[i+1]["-text"]])
+          @make_coupe_arrays(child_obj)
+
+  # transform_html_code:(text)->
+  #   html_entity_code = [['&quot;','"']]
+  #   for code in html_entity_code
+  #     regex = "/"+code[0]+"/"
+  #     text.replace(regex, code[1])
 
 
 jQuery(document).on "ready page:load", ->
