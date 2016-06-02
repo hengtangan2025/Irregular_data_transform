@@ -164,14 +164,8 @@ class Opml2graphviz
       json_ary = tree["opml"]["body"]["outline"]["outline"]
       first_port = json_ary[0]["-text"]
       last_port = json_ary[json_ary.length-1]["-text"]
-      console.log(first_port)
-      console.log(last_port)
-      # a = "test"
-      # b = "结束0"
       @coupe_arys = []
       @make_coupe_arrays(json_ary)
-      # @coupe_arys.push([a,json_ary[0]["-text"]])
-      # @coupe_arys.push([json_ary[json_ary.length-1]["-text"],b])
       print_data = []
       for a in @coupe_arys
         print_data.push(

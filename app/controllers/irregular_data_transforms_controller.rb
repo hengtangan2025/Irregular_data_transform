@@ -151,7 +151,6 @@ class IrregularDataTransformsController < ApplicationController
 
     def get_all_port_after_A(render_arrays,key_port)
       arrays = JsonData.where(:inport => key_port).all.to_a
-      p arrays
       arrays.each do |a|
         hash = {}
         hash[:inPort] = a.inport
@@ -182,9 +181,7 @@ class IrregularDataTransformsController < ApplicationController
         hash[:infoUrl][:title] = a.info_url_title
         hash[:infoUrl][:href] = a.info_url_href
         render_arrays.push(hash)
-        if a.outport == last_port
-          return render_arrays
-        else
+        if a.outport != last_port
           if JsonData.where(:inport => a.outport).all.to_a != nil
             get_all_port_from_A_to_B(render_arrays,a.outport,last_port)
           end
