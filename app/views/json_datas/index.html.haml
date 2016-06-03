@@ -1,0 +1,24 @@
+.page-view-data
+  %ul.json_data
+  - @json_datas.each do |json_data|
+    %li.inport
+      inport:
+      = json_data.inport
+    %li.outport
+      outport:
+      = json_data.outport
+    %li.desc_title
+      desc_title:
+      = json_data.desc_title
+    %li.desc_content
+      desc_content:
+      = json_data.desc_content
+    %li.info_url_title
+      info_url_title:
+      = json_data.info_url_title
+    %li.info_url_href
+      info_url_href:
+      = json_data.info_url_href
+    %a.edit{:href => "/json_datas/#{json_data.id}/edit"} 修改
+    = link_to '删除', "/json_datas/#{json_data.id}", :method => :delete, :class => "btn btn-default delete-json-data"
+

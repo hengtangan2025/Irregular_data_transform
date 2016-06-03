@@ -9,9 +9,10 @@
       =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入起点" ,class: 'first_port'
       终点
       =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入终点" ,class: 'last_port'
+      %button.query-A-to-B-btn{:title =>"查询—查询-查询-查询"} 查询起点到终点思路
       长度
       =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入路径长度" ,class: 'length'
-      %button.query-A-to-B-with-length-btn{:title =>"查询—查询-查询-查询"} 查询思路
+      %button.query-A-to-B-with-length-btn{:title =>"查询—查询-查询-查询"} 查询一定长度的起点到终点的思路
     .query_port_A
       查询节点
       =text_area_tag 'transferd_string', nil, rows: 1, cols: 20, placeholder: "输入查询节点" ,class: 'key_port'  

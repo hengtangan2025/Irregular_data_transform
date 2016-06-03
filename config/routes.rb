@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     collection do
       post 'page_create'
       post 'enter_data'
+      get 'query_json'
     end
   end
 

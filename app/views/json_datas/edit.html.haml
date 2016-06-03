@@ -1,0 +1,28 @@
+.page-edit-data
+  %h2 修改数据
+  -if !notice.nil?
+    -if notice == '保存成功'
+      .notice
+        = notice
+    -else
+      .notice
+        %p 前置知识和后置知识不为空
+  %hr
+  = form_for @json_data, :url => {:action => :update}, :method => :put  do |f|
+    .input
+      = '前置知识'
+      = f.text_field 'inport'
+    .outport
+      = '后置知识'
+      = f.text_field 'outport'
+    .desc
+      = "内容概要"
+      .content
+      = f.text_area 'desc_content'
+    .link
+      = "参考链接"
+      = f.text_field 'info_url_href'
+    %button.btn.btn-defualt
+      = '提交'
+    %button.btn.btn-defualt
+      %a{:href => "/json_datas/#{@json_data.id}/edit"}= '取消'

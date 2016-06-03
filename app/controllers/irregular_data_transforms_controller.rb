@@ -36,10 +36,15 @@ class IrregularDataTransformsController < ApplicationController
   end
 
   def query_json
+    # arrays = []
+    # inport_array = Inport.where(:name => Regexp.new(params[:query_json])).all.to_a
+    # outport_array = Outport.where(:name => Regexp.new(params[:query_json])).all.to_a
+    # inport_array.each do |inport|
+    #   inport_arrays = JsonData.where(:inport_id => inport.id).all.to_a
+    # end
+
     render_arrays =[]
-    arrays =
-    JsonData.where(:outport=>Regexp.new(params[:query_json])).all.to_a+
-    JsonData.where(:inport=>Regexp.new(params[:query_json])).all.to_a
+    arrays = JsonData.where(:outport=>Regexp.new(params[:query_json])).all.to_a + JsonData.where(:inport=>Regexp.new(params[:query_json])).all.to_a
     arrays = arrays.uniq
     arrays.each do |a|
       hash = {}

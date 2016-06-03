@@ -141,6 +141,23 @@ class QueryMindPhotograph
         console.log(msg.result)
         @renderHintsNetGraph(msg.result,first_port)
 
+    @$eml.on "click", ".query-A-to-B-btn",=>
+      first_port = @$eml.find('.first_port').val()
+      last_port = @$eml.find('.last_port').val()
+      query_json_value = first_port + '->' + last_port
+      console.log(query_json_value)
+      length = @$eml.find('.length').val()
+      $.ajax
+        url: "/irregular_data_transforms/query_A_to_B",
+        method: "post",
+        data: {
+          query_A : first_port,
+          query_B : last_port
+       }
+      .success (msg) =>
+        console.log(msg.result)
+        @renderHintsNetGraph(msg.result,first_port)
+
     @$eml.on "click", ".query-all-port-before-A-btn",=>
       key_port = @$eml.find('.key_port').val()
       $.ajax
